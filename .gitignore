@@ -1,0 +1,15 @@
+# Structurizr index files
+**/index/
+index/
+
+# Temporary working folders
+**/even/
+even/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
