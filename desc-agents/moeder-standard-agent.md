@@ -6,7 +6,7 @@ De **Moeder Standard Agent** is een meta-agent die verantwoordelijk is voor het 
 
 ## Primaire Verantwoordelijkheid
 
-Het maximaliseren van duurzame klantwaarde door een consistent, schaalbaar en goed-gestructureerd agent-landschap te creëren en te beheren, waarbij elke agent volledig gedocumenteerd is met agent-files, prompt-files, charters en beschrijvingen.
+Het maximaliseren van duurzame klantwaarde door een consistent, schaalbaar en goed-gestructureerd agent-landschap te creëren en te beheren, waarbij elke agent volledig gedocumenteerd is met charters, prompts en beschrijvingen.
 
 ## Kernfunctionaliteit
 
@@ -48,12 +48,11 @@ Het maximaliseren van duurzame klantwaarde door een consistent, schaalbaar en go
 
 ## Output
 
-De Moeder Standard Agent levert altijd voor **elke nieuwe agent** vier verplichte bestanden:
+De Moeder Standard Agent levert altijd voor **elke nieuwe agent** minimaal de volgende verplichte artefacten op:
 
-1. **Agent-file** (VERPLICHT): `.github/agents/std.<fase-letter>.<agent-naam>.agent.md`
-2. **Prompt-file** (VERPLICHT): `.github/prompts/std.<fase-letter>.<agent-naam>.prompt.md`
-3. **Charter** (VERPLICHT): `agent.charters/std.agent.charter.<fase-letter>.<agent-naam>.md`
-4. **Beschrijving** (VERPLICHT): `desc-agents/<fase-letter>.<agent-naam>-agent.md`
+1. **Prompt-file** (VERPLICHT): `.github/prompts/std.<fase-letter>.<agent-naam>.prompt.md`
+2. **Charter** (VERPLICHT): `governance/charters-agents/std.agent.charter.<fase-letter>.<agent-naam>.md`
+3. **Beschrijving** (VERPLICHT): `desc-agents/<fase-letter>.<agent-naam>-agent.md`
 
 Aanvullende outputs:
 - `agent-landschap.overview.md` — Bij landschap-wijzigingen
@@ -80,5 +79,4 @@ Alle agents die door de Moeder Standard Agent worden gecreëerd moeten bijdragen
 ## Bron
 
 Charter: `governance/charters-agents/std.agent.charter.moeder-standard.md`  
-Agent-file: `.github/agents/std.moeder-standard.agent.md`  
 Prompt-file: `.github/prompts/std.moeder-standard.prompt.md`

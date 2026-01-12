@@ -54,14 +54,14 @@ Deze **Normering voor Agent Charters** definieert **wat een geldig Agent Charter
 ### Beslisbevoegdheid
 - ☑ Normatief: Dit document is bindend voor alle agent-charters
 - ☑ Dit document prevaleert boven individuele agent-charters bij structuurkwesties
-- ☐ Dit document mag NIET conflicteren met de Constitutie of Workspace Architecture
+- ☑ Dit document mag NIET conflicteren met de Constitutie of Workspace Architecture
 
 ### Aannames
-- ☐ Dit document maakt GEEN aannames
+- ☑ Dit document bevat geen impliciete aannames; alle benodigde aannames moeten expliciet worden vastgelegd
 - ☑ Alle regels zijn expliciet en deterministisch
 
-### Escalatie
-Escalatie is niet van toepassing. Wijzigingen aan deze standaard vereisen:
+### Escalatie en wijzigingsproces
+Operationele escalatie (tijdens agent-uitvoering) is niet van toepassing op dit document. Wel geldt het volgende wijzigingsproces voor deze standaard:
 - Brede impactanalyse op alle bestaande charters
 - Expliciete motivatie voor wijziging
 - Review door Architecture & AI Enablement
@@ -79,12 +79,12 @@ Het is cross-fase ondersteunend en van toepassing op alle agents in alle fases.
 
 | SAFe Fase (primair) | Ja/Nee | Rol van de Standaard |
 |---------------------|--------|----------------------|
-| Concept             | ☐      | Governance           |
-| Analysis            | ☐      | Governance           |
-| Design              | ☐      | Governance           |
-| Implementation      | ☐      | Governance           |
-| Validation          | ☐      | Governance           |
-| Release             | ☐      | Governance           |
+| Concept             | Nee    | Governance           |
+| Analysis            | Nee    | Governance           |
+| Design              | Nee    | Governance           |
+| Implementation      | Nee    | Governance           |
+| Validation          | Nee    | Governance           |
+| Release             | Nee    | Governance           |
 
 ---
 
@@ -95,7 +95,7 @@ Als governance-document committeert deze standaard zich aan:
 ### Algemene Kwaliteitsprincipes
 - **Stabiliteit**: Deze standaard verandert zelden; wijzigingen hebben brede impact
 - **Volledigheid**: Alle verplichte charter-secties zijn helder gedefinieerd
-- **Ondubbel zinnigheid**: Alle regels zijn deterministisch en testbaar
+- **Ondubbelzinnigheid**: Alle regels zijn deterministisch en testbaar
 - **Traceerbaarheid**: Elke regel is herleidbaar naar een governance-principe
 - **Consistentie**: Geen conflicten met Constitutie of hogere governance
 
@@ -104,7 +104,7 @@ Als governance-document committeert deze standaard zich aan:
 - ☑ Terminologie is consistent met SAFe Framework
 - ☑ Geen conflicten met Constitutie of Workspace Architecture
 - ☑ Validatieregels zijn testbaar en deterministisch
-- ☑ Voorbeelden zijn beschikbaar voor elke verplichte sectie
+- ☑ Voorbeelden voor elke verplichte sectie zijn beschikbaar in het Agent Charter Template
 - ☑ Escalatie-mechanismen zijn helder beschreven
 
 ---
@@ -141,7 +141,8 @@ Als governance-document committeert deze standaard zich aan:
   - Type: Markdown template  
   - Doel: Charter Schrijver  
   - Conditie: Altijd  
-  - Beschrijving: Sjabloon voor het schrijven van agent-charters
+  - Beschrijving: Sjabloon voor het schrijven van agent-charters  
+  - Locatie: templates/agent.charter.template.md
 
 - **Validatieregels voor Charters**  
   - Type: Tekstuele specificatie  

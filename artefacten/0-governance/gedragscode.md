@@ -1,10 +1,10 @@
-# Constitutie voor Alle Repositories en Agents
+# Gedragscode voor Alle Repositories en Agents
 
 ## Artikel 1 — Doel en Werkingssfeer
 
-- Deze constitutie geldt voor alle repositories, agents, workflows en documenten binnen het ecosysteem van de gebruiker.
-- De constitutie is bindend. Regels in beleid of repository-specifieke documenten mogen niet afwijken van deze constitutie.
-- De constitutie bevordert kwaliteit, duidelijkheid, veiligheid en duurzame waarde in software-ontwikkeling en AI-agent-gedrag.
+- Deze gedragscode geldt voor alle repositories, agents, workflows en documenten binnen het ecosysteem van de gebruiker.
+- De gedragscode is bindend binnen de kaders van de Constitutie (artefacten/0-governance/constitutie.md). Regels in beleid of repository-specifieke documenten mogen niet afwijken van deze gedragscode of de Constitutie.
+- De gedragscode bevordert kwaliteit, duidelijkheid, veiligheid en duurzame waarde in software-ontwikkeling en AI-agent-gedrag.
 
 ## Artikel 2 — Taalgebruik en Communicatie
 

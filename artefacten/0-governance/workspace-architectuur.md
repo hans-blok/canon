@@ -641,9 +641,6 @@ Dit document **implementeert** en **detailleert** de vereisten uit:
 │   ├── moeder-standard-agent.md
 │   └── charter-writer-agent.md
 ├── .github/                           # Meta-agent definities (minimaal)
-│   ├── agents/
-│   │   ├── std.moeder-standard.agent.md
-│   │   └── std.charter-schrijver.agent.md
 │   ├── prompts/
 │   │   ├── std.moeder-standard.prompt.md
 │   │   └── std.charter-schrijver.prompt.md

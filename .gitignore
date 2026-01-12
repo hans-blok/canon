@@ -6,6 +6,10 @@ index/
 **/even/
 even/
 
+# Temp folders
+**/temp/
+temp/
+
 # IDE files
 .vscode/
 .idea/

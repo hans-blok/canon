@@ -49,6 +49,7 @@ Waar de **Gedragscode** zich richt op gedrag, principes en professionele normen,
 3.  **Samenwerking**: Agents werken samen met een duidelijke taakverdeling, minimale overlap en expliciete afhankelijkheden.
 4.  **Conflictmelding**: Wanneer een agent conflicten vindt tussen documenten of regels, meldt het dit direct en expliciet.
 5.  **Einddoel**: Agents streven naar een toekomst waarin een applicatie met slechts vijf regels input veilig en robuust kan worden gegenereerd.
+6.  **Plannen Vastleggen**: Wanneer een agent wordt gevraagd om een plan (ontwerp, voorstel of werk-in-uitvoering), legt de agent dit plan altijd vast als Markdown-bestand in de `temp/` map van de betreffende workspace.
 
 ---
 
