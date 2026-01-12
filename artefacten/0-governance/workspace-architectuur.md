@@ -531,6 +531,7 @@ build/
 - Initiële setup van nieuwe workspaces volgens deze architectuur
 - Validatie van workspace-structuur
 - Migratie van bestaande workspaces
+- Als **Git/GitHub expert** bewaken van workspace-specifieke git-structuur, branching-strategieën en aansluiting op de standards-repository.
 
 ---
 
@@ -570,6 +571,9 @@ Dit document **implementeert** en **detailleert** de vereisten uit:
 - Constitutie Artikel 2 (Workspace Structuur)
 - Beleid §4 (Documentstructuur)
 - Beleid §5 (Artefact-creatie)
+
+Voor repositories die uitsluitend documentatie bevatten (document-repositories, knowledge bases) geldt aanvullend de specifieke invulling in:
+- artefacten/0-governance/workspace-standaard.md
 
 ---
 
