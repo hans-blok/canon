@@ -1,3 +1,3 @@
 ---
-agent: std.moeder-standaard
+agent: std.moeder-standard
 ---
