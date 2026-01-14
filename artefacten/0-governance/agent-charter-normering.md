@@ -3,9 +3,9 @@
 **Type**: Normatief Governance Document  
 **Repository**: standards  
 **Identifier**: standards.governance.agent-charter-normering  
-**Version**: 1.0.0  
+**Version**: 1.1.2  
 **Status**: Active  
-**Last Updated**: 2026-01-09  
+**Last Updated**: 2026-01-14  
 **Owner**: Architecture & AI Enablement
 
 ---
@@ -231,7 +231,69 @@ Een agent **mag niet functioneren** zonder een geldig charter.
 
 ---
 
-## 12. Verplichte Structuur van een Agent Charter
+## 12. Verplichte Componenten per Agent
+
+Elke agent in een document-repository heeft minimaal de volgende zichtbare componenten:
+
+1. **Charter** — normatief contract voor gedrag en scope (verplicht);
+2. **Beschrijvend document** — menselijke rolbeschrijving / samenvatting (verplicht);
+3. **Prompt(s)** — één of meer interface-contracten voor AI-gebruik (verplicht);
+4. **Runner(s)** — optionele automation-scripts zonder AI (aanbevolen voor herhaalbare taken).
+
+Deze componenten zijn logisch gescheiden maar inhoudelijk consistent:
+- Het charter is de bron van waarheid voor beslissingsbevoegdheid, scope, inputs/outputs, anti-patterns en escalatie;
+- De beschrijvende roltekst vertaalt dit naar mensvriendelijke taal;
+- De prompts maken het charter bruikbaar als Copilot-contract (meerdere prompts per agent zijn toegestaan, bijvoorbeeld per taak of doelgroep);
+- Runners maken veelvoorkomende taken automatiseerbaar buiten AI om.
+
+**Richtlijn meerdere prompts per agent**:
+- Een agent mag meerdere prompts hebben, mits:
+  - alle prompts expliciet naar hetzelfde charter verwijzen;
+  - de prompts verschillende, duidelijk gedefinieerde ingangen of scenario's bedienen (bijvoorbeeld: schrijven, valideren, publiceren);
+  - er geen tegenstrijdige instructies tussen prompts bestaan.
+
+### Norm voor agent-resultaten: Herkomstverantwoording
+
+Elke agent die een documentair resultaat oplevert (bijvoorbeeld een Markdown-bestand in `docs/` of `artefacten/`) **MOET** dat resultaat laten beginnen met een sectie **"Herkomstverantwoording"**.
+
+Deze sectie:
+- gebruikt de kop `## Herkomstverantwoording`;
+- bevat een korte toelichting dat het artefact is afgeleid op basis van geraadpleegde bronnen;
+- bevat een lijst met geraadpleegde bronnen, bij voorkeur met:
+  - naam van de bron (bijvoorbeeld documenttitel of bestandsnaam);
+  - versie of datum van de bron (indien bekend);
+  - het tijdstip waarop de bron is gelezen, in de vorm `gelezen op YYYY-MM-DD HH:MM`.
+
+Een documentair agent-resultaat **zonder** sectie "Herkomstverantwoording" is **ongeldig** en mag niet als oplevering worden geaccepteerd.
+
+Voorbeeld van een Herkomstverantwoording voor een agent die een logisch datamodel oplevert:
+
+```markdown
+## Herkomstverantwoording
+
+Dit artefact is afgeleid op basis van de volgende geraadpleegde bronnen:
+
+- Conceptueel datamodel — v2.3 — gelezen op 2026-01-14 16:42
+- Naamgevingsstandaard — v1.1 — gelezen op 2026-01-14 16:43
+- Workspace state — state-data.md — gelezen op 2026-01-14 16:41
+```
+
+Agent-prompts en runners **MOETEN** deze norm afdwingen waar dat passend is voor het type resultaat.
+
+### Norm voor logging in de workspace state
+
+Elke agent die de gedeelde werkelijkheid van een workspace wijzigt (bijvoorbeeld door een normatief document, model of ander gedeeld artefact te creëren of aan te passen), **MOET** deze wijziging vastleggen in de bijbehorende workspace state (`state-<workspace-naam>.md`).
+
+Voor elke wijziging die impact heeft op de gedeelde werkelijkheid geldt:
+- de wijziging wordt **onverwijld** gelogd in de workspace state;
+- de logging bevat minimaal: wat is gewijzigd, wanneer, en door wie (mens of agent);
+- wijzigingen die niet in de workspace state zijn gelogd, worden canoniek geacht **niet te bestaan**.
+
+Agent-charters, prompts en runners **MOETEN** deze loggingplicht expliciet maken en afdwingen waar dat binnen hun scope valt.
+
+---
+
+## 13. Verplichte Structuur van een Agent Charter
 
 Elk agent charter **MOET** minimaal de volgende 11 secties bevatten, in deze volgorde:
 
@@ -526,9 +588,12 @@ Een agent-charter is conform deze standaard wanneer:
 
 ## 18. Change Log
 
-| Datum      | Versie | Wijziging                                   | Auteur                      |
-|------------|--------|---------------------------------------------|-----------------------------|
-| 2026-01-09 | 1.0.0  | Initiële versie Normering voor Agent Charters | Charter Schrijver Agent   |
+| Datum      | Versie | Wijziging                                                             | Auteur                    |
+|------------|--------|-----------------------------------------------------------------------|---------------------------|
+| 2026-01-14 | 1.1.2  | Toegevoegd: norm dat agents wijzigingen in de gedeelde werkelijkheid moeten loggen in de workspace state | Charter Schrijver Agent |
+| 2026-01-14 | 1.1.1  | Verduidelijkt dat documentair agent-resultaat zonder Herkomstverantwoording ongeldig is | Charter Schrijver Agent |
+| 2026-01-14 | 1.1.0  | Toegevoegd: verplichte Herkomstverantwoording bij agent-resultaten    | Charter Schrijver Agent |
+| 2026-01-09 | 1.0.0  | Initiële versie Normering voor Agent Charters                         | Charter Schrijver Agent   |
 
 ## Slot
 

@@ -1,6 +1,6 @@
 # Phase Charter — <Phase Name>
 
-**Delivery Framework**: delivery-framework.md  
+**Doctrine IT Development**: doctrine-it-development.md  
 **Phase Identifier**: <repo>.charter.phase.<phase-name>  
 **Version**: 0.1.0  
 **Status**: Draft | Active | Completed | Deprecated  

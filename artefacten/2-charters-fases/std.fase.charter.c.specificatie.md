@@ -1,6 +1,6 @@
 # Phase Charter — Specificatie
 
-**Delivery Framework**: delivery-framework.md  
+**Doctrine IT Development**: doctrine-it-development.md  
 **Phase Identifier**: standards.charter.phase.specificatie  
 **Version**: 3.1.0  
 **Status**: Active  

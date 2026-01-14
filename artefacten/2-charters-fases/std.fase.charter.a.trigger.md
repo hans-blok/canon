@@ -1,6 +1,6 @@
 # Phase Charter — Trigger (Initiatie)
 
-**Delivery Framework**: delivery-framework.md  
+**Doctrine IT Development**: doctrine-it-development.md  
 **Phase Identifier**: standards.charter.phase.a.trigger  
 **Version**: 1.1.0  
 **Status**: Active  

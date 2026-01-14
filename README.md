@@ -67,10 +67,10 @@ Open vervolgens een browser op [http://localhost:8080](http://localhost:8080) om
 
 ```
 standards/
-├── governance/           — Constitutie, beleid, frameworks
+├── governance/           — Constitutie, beleid, doctrines
 │   ├── constitutie.md
 │   ├── beleid-standard.md
-│   ├── delivery-framework.md
+│   ├── doctrine-it-development.md
 │   └── wetten-it-ontwikkeling.md
 │
 ├── charters.agents/      — Volledige agent-charters
@@ -106,7 +106,7 @@ standards/
 ### Governance
 - **[Constitutie](governance/constitutie.md)** — Fundamentele principes en wetten
 - **[Beleid](artefacten/0-governance/beleid-standard.md)** — Workspace-specifieke regels (scope & out of scope)
-- **[Delivery Framework](governance/delivery-framework.md)** — SAFe development value stream
+- **[Doctrine IT Development](artefacten/0-governance/doctrine-it-development.md)** — SAFe-gebaseerde doctrine voor de IT-development waardestroom
 - **[Wetten IT Ontwikkeling](governance/wetten-it-ontwikkeling.md)** — Universele ontwikkelprincipes
 
 ### Agent Charters
@@ -134,7 +134,7 @@ standards/
 
 ### 2. Artefact-Generatie
 
-Agents genereren artefacten in de **artefacten** folder conform het Delivery Framework:
+Agents genereren artefacten in de **artefacten** folder conform de Doctrine IT Development:
 
 ```
 Project-Workspace/
@@ -155,18 +155,18 @@ Alle PowerShell scripts voor artefact-creatie bevinden zich in de **agent-capabi
 
 ---
 
-## Development Value Stream (SAFe)
+## Doctrine IT Development (SAFe)
 
-Alle agents (behalve Logos) opereren binnen het SAFe framework:
+Alle agents (behalve Logos) die in de IT-development waardestroom werken, volgen de doctrine IT Development op basis van het SAFe framework:
 
 ```
 A. Trigger → B. Architectuur → C. Specificatie → D. Ontwerp → 
 E. Bouw → F. Validatie → G. Deployment
-                  ↕
-              U. Utility
+              ↕
+           U. Utility
 ```
 
-Zie [Delivery Framework](governance/delivery-framework.md) voor details.
+Zie [Doctrine IT Development](artefacten/0-governance/doctrine-it-development.md) voor details.
 
 ---
 
