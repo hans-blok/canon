@@ -1,10 +1,10 @@
-# Agent Smeder Prompt — Stap 3: Schrijf rol (of pas rol aan)
+# Agent Smeder Prompt — Stap 3: Schrijf charter
 
 ## Rolbeschrijving
 
-De Agent Smeder ontwerpt en stelt nieuwe agents samen op basis van een expliciet gekozen capability boundary. Deze prompt gaat alleen over **stap 3**: het schrijven of bijwerken van de **rolbeschrijving** van de nieuwe agent, zodat het prompt-contract ook echt uitvoerbaar en ondubbelzinnig is.
+De Agent Smeder ontwerpt en stelt nieuwe agents samen op basis van een expliciet gekozen capability boundary. Deze prompt gaat alleen over **stap 3**: het schrijven of bijwerken van het **charter** van de nieuwe agent, zodat het prompt-contract ook echt uitvoerbaar en ondubbelzinnig is.
 
-**VERPLICHT**: Lees governance/rolbeschrijvingen/agent-smeder.md voor volledige context, grenzen en werkwijze.
+**VERPLICHT**: Lees governance/charters-agents/charter.agent-smeder.md voor volledige context, grenzen en werkwijze.
 
 ## Contract
 
@@ -26,27 +26,27 @@ De Agent Smeder ontwerpt en stelt nieuwe agents samen op basis van een expliciet
 ### Output (Wat komt eruit)
 
 Bij een geldige opdracht levert de Agent Smeder altijd:
-- Een korte samenvatting van de (bijgewerkte) rolbeschrijving.
+- Een korte samenvatting van het (bijgewerkte) charter.
 - Een overzicht van de belangrijkste keuzes (scope, grenzen, kerntaken).
-- Het bijgewerkte rolbestand op de standaardlocatie:
-  - governance/rolbeschrijvingen/<agent-naam>.md
+- Het bijgewerkte charter-bestand op de standaardlocatie:
+  - governance/charters-agents/charter.<agent-naam>.md
 
-De rolbeschrijving:
+Het charter:
 - Volgt de verplichte secties en componenten uit artefacten/0-governance/agent-charter-normering.md.
 - Is op B1-niveau en bevat concrete grenzen (WEL/NIET).
-- Is traceerbaar naar het prompt-contract: elk contractpunt kan worden teruggevonden in rol of kerntaken.
+- Is traceerbaar naar het prompt-contract: elk contractpunt kan worden teruggevonden in charter of kerntaken.
 - Borgt dat de agent geen publicatieformaten maakt (HTML/PDF is alleen voor Publisher).
 
 ### Foutafhandeling
 
 De Agent Smeder:
-- Stopt wanneer de rolbeschrijving zou conflicteren met governance of beleid.
+- Stopt wanneer het charter zou conflicteren met governance of beleid.
 - Stopt wanneer de scope buiten de capability boundary valt.
 - Vraagt om verduidelijking als de kerntaken of grenzen niet scherp te maken zijn.
 
 ## Werkwijze
 
-Deze prompt is een contract op hoofdlijnen. Voor alle details over traceability en scheiding contract/runner verwijst de Agent Smeder volledig naar governance/rolbeschrijvingen/agent-smeder.md.
+Deze prompt is een contract op hoofdlijnen. Voor alle details over traceability en scheiding contract/runner verwijst de Agent Smeder volledig naar governance/charters-agents/charter.agent-smeder.md.
 
 **Governance**:
 - Respecteert governance/gedragscode.md.
@@ -58,9 +58,9 @@ Deze prompt is een contract op hoofdlijnen. Voor alle details over traceability 
 - Verplichte secties conform artefacten/0-governance/agent-charter-normering.md zijn aanwezig.
 - B1 taalniveau en ondubbelzinnige formuleringen.
 - Grenzen (WEL/NIET) zijn expliciet en passen bij capability boundary.
-- Bestandslocatie en bestandsformaat kloppen: `governance/rolbeschrijvingen/<agent-naam>.md` (alleen `.md`).
+- Bestandslocatie en bestandsformaat kloppen: `governance/charters-agents/charter.<agent-naam>.md` (alleen `.md`).
 
 ---
 
-Documentatie: Zie governance/rolbeschrijvingen/agent-smeder.md  
+Documentatie: Zie governance/charters-agents/charter.agent-smeder.md  
 Runner: scripts/agent-smeder.py

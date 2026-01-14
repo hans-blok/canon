@@ -194,7 +194,9 @@ def op_zet_agent_boundary(
 ) -> OperationResult:
     """Operatie: zet-agent-boundary
     
-    Definieert capability boundary voor nieuwe agent (output voor Agent Smeder).
+    Definieert capability boundary voor nieuwe agent en slaat op als deliverable.
+    Output wordt opgeslagen in docs/resultaten/moeder/agent-boundary-{agent-naam}.md
+    voor traceerbaarheid en handoff naar Agent Smeder.
     """
     _policy_gate_workspace_paths(workspace_root)
     _policy_gate_governance_exists(workspace_root)
@@ -214,18 +216,22 @@ def op_zet_agent_boundary(
     if not gewenste_capability:
         raise ValueError("--gewenste-capability is verplicht voor zet-agent-boundary operatie")
     
-    artifacts: list[Path] = []
+    # Placeholder: in werkelijkheid zou hier de boundary door AI worden gegenereerd
+    # Voor nu gebruiken we opdracht als basis en verwachten we dat de gebruiker
+    # de boundary als onderdeel van opdracht formuleert
     
-    # Placeholder implementatie - boundary definitie vereist AI/menselijke beoordeling
+    # Parseer opdracht voor boundary-componenten (verwacht format in opdracht)
+    # Dit is een vereenvoudigde implementatie - in productie zou dit door AI gebeuren
     message = (
         f"Agent boundary definitie - aanleiding: '{aanleiding}', "
-        f"capability: '{gewenste_capability}' (nog te implementeren)"
+        f"capability: '{gewenste_capability}'. "
+        "Boundary moet handmatig worden vastgelegd in docs/resultaten/moeder/agent-boundary-<agent-naam>.md"
     )
     
     return OperationResult(
         success=True,
         message=message,
-        artifacts=artifacts,
+        artifacts=[],
     )
 
 

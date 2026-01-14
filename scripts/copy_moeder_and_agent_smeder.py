@@ -85,7 +85,7 @@ def main() -> None:
     agent_smeder_prompts = [
         "agent-smeder-1-initiele-agent.prompt.md",
         "agent-smeder-2-definieer-prompt.prompt.md",
-        "agent-smeder-3-schrijf-rol.prompt.md",
+        "agent-smeder-3-schrijf-charter.prompt.md",
         "agent-smeder-4-schrijf-runner.prompt.md",
     ]
 

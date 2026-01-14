@@ -26,13 +26,16 @@ Moeder ontwerpt en wijzigt **geen prompts**; het definiëren en onderhouden van 
 
 ### Output (Wat komt eruit)
 
-Bij een geldige opdracht levert Moeder altijd exact deze 4 regels:
-- agent-naam: Unieke identifier voor de nieuwe agent (type: string, lowercase met hyphens)
-- capability-boundary: De expliciete afbakening in één zin (type: string)
-- doel: Wat de nieuwe agent doet in één zin (type: string)
-- domein: Kennisgebied of specialisatie (type: string)
+Bij een geldige opdracht levert Moeder altijd:
+1. Deze 4 regels als antwoord aan de gebruiker
+2. Deze 4 regels opgeslagen in het deliverable bestand
 
-Outputformaat:
+**Deliverable bestand**:
+- Locatie: `docs/resultaten/moeder/agent-boundary-<agent-naam>.md`
+- Inhoud: De 4 regels hieronder
+- Deze boundary is input voor Agent Smeder handoff
+
+**Outputformaat** (4 regels):
 ```
 agent-naam: <lowercase-hyphens>
 capability-boundary: <één zin>
