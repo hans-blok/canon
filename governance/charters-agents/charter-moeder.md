@@ -42,6 +42,7 @@ Bron: `moeder-configureer-github.prompt.md`
 - **Collaboratie**: Issue templates, PR templates, Contributing guidelines, Code of conduct (publieke repos)
 - **Automation**: GitHub Pages (docs website), branch protection rules, stale issue auto-close, dependency updates
 - **Zichtbaarheid**: Adviseert over public/private, collaborator toegang
+- **Copilot configuratie**: Bewaakt dat `.github/copilot/` map bestaat met `agents.yaml` en `workflow.yaml` op correcte locatie
 
 ### 3. Workspace Ordening
 Bron: `moeder-orden-workspace.prompt.md` + `moeder.prompt.md`
@@ -176,6 +177,7 @@ Bron: `moeder-beheer-workspace-state.prompt.md`
 - README actualiseren bij structuur wijzigingen
 - .gitignore aanvullen met nieuwe patronen
 - GitHub repository configureren (description, topics, branch protection)
+- `.github/copilot/` map bewaken met `agents.yaml` en `workflow.yaml` aanwezig
 - Workspace compliance bewaken (inclusief workspace state doctrine)
 - Prompt-naamgeving afdwingen voor multi-step agents
 - Waarschuwingen geven bij governance conflicts
@@ -293,6 +295,7 @@ Gebruik `.github/prompts/moeder-configureer-github.prompt.md`:
 1. **Repository Setup**: Description, topics, README, About, License
 2. **Collaboratie**: Issue/PR templates, Contributing guidelines, Code of conduct (publiek)
 3. **Automation**: GitHub Pages, branch protection, stale issue cleanup, dependency updates
+4. **Copilot Configuratie**: Controleer dat `.github/copilot/` map bestaat met `agents.yaml` en `workflow.yaml`
 
 ## Communicatie
 
@@ -488,7 +491,7 @@ Actie:
 
 ---
 
-**Versie**: 2.1  
+**Versie**: 2.2  
 **Laatst bijgewerkt**: 2026-01-14
 **Gerelateerde agents**:
 - **Agent Smeder** (`governance/rolbeschrijvingen/agent-smeder.md`) - Ontwerp en samenstelling van nieuwe agents op basis van boundaries

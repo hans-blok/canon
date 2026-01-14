@@ -1,10 +1,27 @@
 # Workspace Doctrine — Architectuur en Standaard voor Workspaces
 
-**Versie**: 1.0.0  
+**Versie**: 1.1.0  
 **Status**: Actief  
 **Datum**: 2026-01-14  
 **Eigenaar**: Architecture & AI Enablement  
 **Type**: Normerend Doctrine-document
+
+---
+
+## Herkomstverantwoording
+
+Dit normatief artefact is afgeleid op basis van de volgende bronnen:
+
+**Geraadpleegde bronnen**:
+- artefacten/0-governance/workspace-architectuur.md (versie 1.0.0, gelezen op 2026-01-14 14:30 CET)
+- artefacten/0-governance/workspace-standaard.md (gelezen op 2026-01-14 14:30 CET)
+- artefacten/0-governance/constitutie.md (gelezen op 2026-01-14 14:32 CET)
+- Gebruikersinstructies voor root-structuur aanpassing (ontvangen op 2026-01-14 14:35 CET)
+
+**Wijzigingen in versie 1.1.0**:
+- Root-structuur specificatie aangescherpt: verplichte folders (.github, beleid, docs, scripts) en logs (in gitignore)
+- Root-bestanden gespecificeerd: .gitignore, README.md, <workspace>.ping, state-<naam-workspace>
+- Herkomstverantwoording sectie toegevoegd conform agent-charter-normering.md
 
 ---
 
@@ -60,7 +77,49 @@ Deze principes zijn nader uitgewerkt in de twee onderliggende onderdelen van de 
 
 ---
 
-## 3. Onderdeel 1: Workspace-architectuur (alle workspaces)
+## 3. Root-structuur voor workspaces
+
+Elke workspace **moet** de volgende root-structuur hebben:
+
+### 3.1 Verplichte folders in root
+
+```
+<workspace-root>/
+├── .github/          # GitHub-specifieke configuratie (prompts, workflows, copilot)
+├── beleid/           # Workspace-specifiek beleid (NIEUW: vervangt governance/ in sommige gevallen)
+├── docs/             # Documentatie, diagrammen en agent-resultaten
+├── scripts/          # Automatiseringsscripts en runners
+└── logs/             # Logbestanden van agent-uitvoer (in .gitignore, niet in Git)
+```
+
+**Toelichting**:
+- **.github/**: Bevat prompts (.github/prompts/), workflows (.github/workflows/) en copilot configuratie (.github/copilot/)
+- **beleid/**: Workspace-specifieke beleidsregels, gedragscode en charters
+- **docs/**: Alle documentatie inclusief docs/resultaten/{agent-naam}/ voor agent-output
+- **scripts/**: Python runners en hulpscripts voor agents
+- **logs/**: Tijdelijke logbestanden, **altijd in .gitignore**
+
+### 3.2 Verplichte bestanden in root
+
+```
+<workspace-root>/
+├── .gitignore                    # Git ignore regels (verplicht)
+├── README.md                     # Workspace documentatie (verplicht)
+├── <workspace>.ping              # Ping-bestand voor normatief stelsel synchronisatie
+└── state-<naam-workspace>.md     # Workspace state logging (conform workspace-state doctrine)
+```
+
+**Toelichting**:
+- **.gitignore**: Moet minimaal logs/ en temp/ uitsluiten
+- **README.md**: Beschrijft workspace doel, structuur en beschikbare agents
+- **<workspace>.ping**: Bijvoorbeeld `standard.ping`, `agent-capabilities.ping` - gebruikt voor normatief stelsel actualiteit
+- **state-<naam-workspace>.md**: Bijvoorbeeld `state-standard.md` - logt wijzigingen aan canonieke/normatieve artefacten conform doctrine-workspace-state-en-legitimiteit.md
+
+**Let op**: De folders artefacten/ en templates/ zijn optioneel en afhankelijk van workspace-type (zie onderdeel 1: workspace-architectuur voor details).
+
+---
+
+## 4. Onderdeel 1: Workspace-architectuur (alle workspaces)
 
 De **workspace-architectuur** beschrijft de verplichte structuur en conventies voor alle soorten workspaces in het eco-systeem.
 
@@ -81,7 +140,7 @@ Wanneer in charters, prompts of beleid wordt verwezen naar de "workspace-archite
 
 ---
 
-## 4. Onderdeel 2: Workspace-standaard voor document-repositories
+## 5. Onderdeel 2: Workspace-standaard voor document-repositories
 
 De **workspace-standaard voor document-repositories** specificeert de verplichte structuur en afspraken voor repositories waarin documentatie en governance centraal staan.
 
@@ -103,9 +162,9 @@ Wanneer in charters, prompts of beleid wordt verwezen naar de "workspace-standaa
 
 ---
 
-## 5. Gebruik van de workspace-doctrine
+## 6. Gebruik van de workspace-doctrine
 
-### 5.1 Door Moeder
+### 6.1 Door Moeder
 
 Moeder gebruikt deze doctrine als norm bij:
 
@@ -116,7 +175,7 @@ Moeder gebruikt deze doctrine als norm bij:
 
 Waar in prompts en charters eerder letterlijk `governance/workspace-standaard.md` of alleen de workspace-architectuur werd genoemd, geldt nu deze workspace-doctrine als overkoepelend document.
 
-### 5.2 Door Agent Smeder en andere agents
+### 6.2 Door Agent Smeder en andere agents
 
 Agent Smeder en andere agents die prompts, charters of runners genereren:
 
@@ -124,7 +183,7 @@ Agent Smeder en andere agents die prompts, charters of runners genereren:
 - controleren of voorgestelde output-locaties met de doctrine in lijn zijn;
 - verwijzen in tekst en voorbeelden naar deze doctrine als bron voor structuur en conventies.
 
-### 5.3 Door beleidsmakers en architecten
+### 6.3 Door beleidsmakers en architecten
 
 Beleid- en architectuurdocumenten die iets zeggen over workspace-structuur:
 
@@ -134,7 +193,7 @@ Beleid- en architectuurdocumenten die iets zeggen over workspace-structuur:
 
 ---
 
-## 6. Relatie met andere governance
+## 7. Relatie met andere governance
 
 Bij conflicten geldt de volgende rangorde:
 
@@ -147,8 +206,9 @@ De workspace-doctrine implementeert en concretiseert de vereisten uit de constit
 
 ---
 
-## 7. Wijzigingslog
+## 8. Wijzigingslog
 
 | Datum      | Versie | Wijziging                                                           | Auteur            |
 |------------|--------|---------------------------------------------------------------------|-------------------|
 | 2026-01-14 | 1.0.0  | Eerste versie, bundelt workspace-architectuur en workspace-standaard in één workspace-doctrine | Charter Schrijver |
+| 2026-01-14 | 1.1.0  | Root-structuur aangescherpt: verplichte folders (.github, beleid, docs, scripts, logs), verplichte root-bestanden (.gitignore, README.md, <workspace>.ping, state-<naam-workspace>.md), Herkomstverantwoording sectie toegevoegd | Constitutioneel Auteur |

@@ -3,10 +3,29 @@
 **Type**: Normatief Governance Document  
 **Repository**: standards  
 **Identifier**: standards.governance.agent-charter-normering  
-**Version**: 1.1.2  
+**Version**: 1.2.0  
 **Status**: Active  
 **Last Updated**: 2026-01-14  
 **Owner**: Architecture & AI Enablement
+
+---
+
+## Herkomstverantwoording
+
+Dit normatief artefact is afgeleid op basis van de volgende bronnen:
+
+**Geraadpleegde bronnen**:
+- normatief-stelsel/globaal/constitutie.md (gelezen op 2026-01-14, exacte tijd niet beschikbaar)
+- normatief-stelsel/globaal/workspace-doctrine.md (versie 1.1.0, gelezen op 2026-01-14, exacte tijd niet beschikbaar)
+- Eerdere versie agent-charter-normering.md (versie 1.1.2, gelezen op 2026-01-14, exacte tijd niet beschikbaar)
+- Gebruikersinstructies voor tijd/context normering (ontvangen op 2026-01-14, exacte tijd niet beschikbaar)
+
+**Toelichting tijdreferenties**: Conform de nieuwe norm "Tijd is Context" (sectie 11.1) worden geen tijdstippen ingevuld indien deze niet expliciet beschikbaar zijn. Alleen de datum (2026-01-14) is bekend uit de beschikbare context.
+
+**Wijzigingen in versie 1.2.0**:
+- Herkomstverantwoording sectie toegevoegd conform eigen normering
+- Nieuwe norm toegevoegd: Tijd is context en wordt nooit door agents afgeleid; bij ontbrekende tijdreferentie melden agents dit expliciet
+- Timestamps aangepast conform nieuwe normering: alleen datum vermeld indien tijd niet expliciet beschikbaar is
 
 ---
 
@@ -228,6 +247,24 @@ Een **Agent Charter** is een normatief document dat vastlegt:
 - Wat expliciet niet zijn doel is (Non-Goals)
 
 Een agent **mag niet functioneren** zonder een geldig charter.
+
+---
+
+## 11.1. Norm: Tijd is Context
+
+**Verwijzing**: Zie **doctrine-tijdreferentie-en-contextuele-geldigheid.md** voor de volledige normering.
+
+**Kernprincipe**: Tijd is context en wordt nooit door agents afgeleid.
+
+Agents hebben geen betrouwbare kennis van de huidige tijd tenzij deze expliciet wordt aangeleverd. Voor alle details, verplichtingen en voorbeelden, zie:
+
+→ `normatief-stelsel/globaal/doctrine-tijdreferentie-en-contextuele-geldigheid.md`
+
+**Samenvatting** (voor quick reference):
+- Indien geen expliciete tijdreferentie beschikbaar is: agents melden dit expliciet en vullen **geen** tijdstip in
+- Timestamps in normatieve artefacten: altijd met timezone (CET, CEST, UTC+1)
+- Herkomstverantwoording timestamps: formaat `YYYY-MM-DD HH:MM <TIMEZONE>` of `YYYY-MM-DD (exacte tijd niet beschikbaar)`
+- Geen gissen: agents raden nooit tijdstippen, datums of tijdzones
 
 ---
 
@@ -590,6 +627,7 @@ Een agent-charter is conform deze standaard wanneer:
 
 | Datum      | Versie | Wijziging                                                             | Auteur                    |
 |------------|--------|-----------------------------------------------------------------------|---------------------------|
+| 2026-01-14 | 1.2.0  | Herkomstverantwoording toegevoegd; nieuwe norm: tijd is context (agents leiden tijd nooit af, melden ontbrekende tijdreferentie expliciet); timestamps met timezone (CET) | Constitutioneel Auteur |
 | 2026-01-14 | 1.1.2  | Toegevoegd: norm dat agents wijzigingen in de gedeelde werkelijkheid moeten loggen in de workspace state | Charter Schrijver Agent |
 | 2026-01-14 | 1.1.1  | Verduidelijkt dat documentair agent-resultaat zonder Herkomstverantwoording ongeldig is | Charter Schrijver Agent |
 | 2026-01-14 | 1.1.0  | Toegevoegd: verplichte Herkomstverantwoording bij agent-resultaten    | Charter Schrijver Agent |

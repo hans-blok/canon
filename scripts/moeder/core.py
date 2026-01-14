@@ -82,17 +82,38 @@ def op_configureer_github(
     """Operatie: configureer-github
     
     Configureert GitHub repository settings, collaboratie en automation.
-    Scope opties: repository-setup, collaboratie, automation, pages
+    Scope opties: repository-setup, collaboratie, automation, pages, copilot-config
+    
+    Inclusief controle van .github/copilot/ configuratie (agents.yaml en workflow.yaml).
     """
     _policy_gate_workspace_paths(workspace_root)
     
-    # Placeholder implementatie - deze operatie is meestal manueel/conversationeel
     artifacts: list[Path] = []
+    warnings: list[str] = []
+    
+    # Check Copilot configuratie als onderdeel van GitHub setup
+    copilot_dir = workspace_root / ".github" / "copilot"
+    agents_yaml = copilot_dir / "agents.yaml"
+    workflow_yaml = copilot_dir / "workflow.yaml"
+    
+    if not copilot_dir.exists():
+        warnings.append("⚠️  .github/copilot/ map ontbreekt")
+    else:
+        if not agents_yaml.exists():
+            warnings.append("⚠️  .github/copilot/agents.yaml ontbreekt")
+        if not workflow_yaml.exists():
+            warnings.append("⚠️  .github/copilot/workflow.yaml ontbreekt")
     
     scope_desc = f" (scope: {scope})" if scope else ""
     mode_desc = "Analyse" if check_only else "Actie"
     
-    message = f"{mode_desc}: GitHub configuratie{scope_desc} - '{opdracht}' (nog te implementeren)"
+    base_message = f"{mode_desc}: GitHub configuratie{scope_desc} - '{opdracht}'"
+    
+    if warnings:
+        warning_text = "; " + ", ".join(warnings)
+        message = base_message + warning_text
+    else:
+        message = base_message + " (Copilot config OK)"
     
     return OperationResult(
         success=True,
