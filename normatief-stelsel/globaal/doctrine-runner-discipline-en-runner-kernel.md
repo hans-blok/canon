@@ -1,3 +1,22 @@
+## Herkomstverantwoording
+
+Dit normatief artefact is vastgelegd door de Constitutioneel Auteur op basis van directe input van Hans Blok en de bestaande doctrine-inhoud.
+
+**Geraadpleegde bronnen**:
+- Constitutie van het Eco-systeem (versie 1.1.0, datum 2026-01-08), gelezen op 2026-01-15 09:30
+- Doctrine — Workspace State & Legitimiteit, gelezen op 2026-01-15 09:30
+- Doctrine — Handoff Creation en Overdrachtsdiscipline, gelezen op 2026-01-15 09:30
+- Doctrine — Tijdreferentie en Contextuele Geldigheid, gelezen op 2026-01-15 09:30
+- temp/handoff-loggin-contract.yaml (handoff logging schema specificatie), gelezen op 2026-01-15 (exacte tijd niet beschikbaar)
+- Input Hans Blok, ontvangen op 2026-01-15 09:30
+
+**Toelichting wijzigingen**:
+- Initiële Herkomstverantwoording toegevoegd conform prompt contract (2026-01-15 09:30)
+- Sectie 9 "Handoff Logging Contract" toegevoegd op basis van temp/handoff-loggin-contract.yaml (2026-01-15)
+- Deze toevoeging specificeert het normatieve logging-contract voor handoffs conform de Runner Kernel discipline
+
+---
+
 ## Doctrine — Runner Discipline & Runner Kernel
 
 ### Status
@@ -137,3 +156,98 @@ De Runner Kernel borgt dat:
 
 Zonder runner discipline
 is geen sprake van legitieme agent-actie.
+---
+
+### 9. Handoff Logging Contract
+
+De Runner Kernel legt handoffs vast als **uitvoeringsspoor** (observability).
+
+**Belangrijk**: Logs zijn **niet-normatief**. 
+Ze mogen niet dienen als bron van waarheid, 
+maar uitsluitend als trace voor debugging en audit.
+
+#### 9.1. Storage
+
+Handoff logs worden opgeslagen als:
+- **Formaat**: YAML
+- **Locatie**: `.kernel/runs/`
+- **Mode**: run_log (alle events van één run in één bestand)
+
+#### 9.2. Retentie
+
+Logs worden behouden volgens:
+- Bewaar maximaal **20 runs**, of
+- Bewaar maximaal **7 dagen**, of
+- Bij failure: bewaar maximaal **30 dagen**
+
+Oudere logs mogen worden verwijderd conform retentie-beleid.
+
+#### 9.3. Redactie-beleid
+
+Logs bevatten **alleen pointers**, geen inhoud:
+
+**Verboden** in logs:
+- volledige prompts
+- volledige policy-teksten
+- secrets of credentials
+- file content dumps
+
+**Toegestaan** in logs:
+- bestandspaden
+- commit hashes
+- timestamps
+- status indicatoren
+- korte berichten (max 500 karakters)
+
+#### 9.4. Verplichte velden
+
+Elke run log **moet** bevatten:
+- `schema`: identificatie van contract versie
+- `run_id`: unieke run identifier
+- `created_at_utc`: UTC timestamp van aanmaak
+- `recorded_by`: component identificatie (`{component, name, version}`)
+- `workspace`: workspace metadata (`{name, root, active_branch, base_commit}`)
+- `state_ref`: referentie naar state (`{path, hash}`)
+- `events`: lijst van events (minimaal één handoff)
+- `result`: eindresultaat (`{status, message}`)
+
+#### 9.5. Handoff event structuur
+
+Elk handoff event **moet** bevatten:
+- `type`: "handoff"
+- `id`: unieke event identifier
+- `at_utc`: UTC timestamp van handoff
+- `from_agent`: agent/runner die overdraagt
+- `to_agent`: agent/runner die ontvangt
+- `intent`: korte beschrijving van doel
+- `trigger`: gestructureerd (`{reason, summary}`)
+- `result`: event resultaat (`{status, message}`)
+
+**Optioneel**:
+- `pointers`: referenties naar specs/governance (geen inhoud)
+- `effects`: gewijzigde bestanden (`{files_changed, state_updates}`)
+
+#### 9.6. Trigger classificatie
+
+De `trigger.reason` moet één van deze waarden hebben:
+- `normative_change`: wijziging aan normatief stelsel
+- `policy_gate`: policy validatie vereist actie
+- `user_request`: handmatige gebruikersopdracht
+- `recovery`: herstelactie na failure
+- `other`: overige redenen (met toelichting)
+
+#### 9.7. Event regels
+
+De volgende regels zijn **verplicht**:
+1. Elke daadwerkelijke overgang van agent A naar agent B **moet** een handoff-event produceren
+2. Een handoff-event **moet** een `state_ref` bevatten (direct of via envelope)
+3. `effects` **moet** paden loggen voor wijzigingen, maar **mag niet** inhoud loggen
+4. Bij failure **moet** een korte message aanwezig zijn (≤ 500 karakters)
+
+#### 9.8. Schema versie
+
+Het logging contract is geversioneerd.
+Huidige versie: `runner_handoff_logging_contract/v1`
+
+Runners **moeten** de schema-versie vermelden in elk log-bestand
+voor toekomstige compatibiliteit en validatie.

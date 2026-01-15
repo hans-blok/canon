@@ -43,6 +43,8 @@ doel: <één zin>
 domein: <één woord of korte frase>
 ```
 
+**Let op**: Deze boundary-output is een deliverable document in `docs/resultaten/moeder/` en MOET daarom beginnen met `## Herkomstverantwoording`.
+
 ### Foutafhandeling
 
 Moeder:

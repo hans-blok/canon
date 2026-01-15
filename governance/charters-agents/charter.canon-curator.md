@@ -198,6 +198,24 @@ De canon-curator communiceert:
 - **Overzichtelijk**: structureert informatie helder
 - **Traceerbaar**: verwijst naar concrete artefacten en locaties
 
+## Herkomstverantwoording in deliverables
+
+**VERPLICHT**: Alle deliverable documenten die Canon Curator produceert in `docs/resultaten/canon-curator/` **MOETEN** beginnen met een sectie `## Herkomstverantwoording`.
+
+Dit geldt voor:
+- Validatie rapporten
+- Voorstellen voor canonwijzigingen
+- Publicatie rapporten
+- Onderhoud overzichten
+- Alle andere documentaire output
+
+De Herkomstverantwoording bevat:
+- Datum en tijd van creatie (UTC)
+- Geraadpleegde bronnen (handoffs, state, normatief stelsel)
+- Korte toelichting op het deliverable
+
+Zonder Herkomstverantwoording is een deliverable **ongeldig**.
+
 ---
 
 **Versie**: 1.2  

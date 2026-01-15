@@ -27,6 +27,8 @@ Bij een geldige opdracht levert de Agent Smeder altijd:
 - Een overzicht van de gekozen basisinstellingen (agent-naam, workspace, type, domein, capability boundary).
 - Een lijst met aangemaakte of bijgewerkte bestanden en hun locaties.
 
+**Let op**: Agent Smeder produceert structurele bestanden (charters, prompts, runners) maar geen documentaire resultaten die Herkomstverantwoording vereisen. De aangemaakte prompts zelf bevatten wel instructies voor Herkomstverantwoording.
+
 De initiele agent-skeleton bestaat minimaal uit:
 - governance/rolbeschrijvingen/<agent-naam>.md (placeholder of basisstructuur)
 - .github/prompts/<agent-naam>.prompt.md (placeholder of basisstructuur)

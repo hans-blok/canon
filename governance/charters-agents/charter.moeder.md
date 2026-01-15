@@ -105,12 +105,18 @@ doel: {één zin waarom de agent nodig is}
 domein: {woord of korte frase waar het over gaat}
 ```
 
+**VERPLICHT**: De boundary wordt **altijd weggeschreven** als deliverable in:
+- Locatie: `docs/resultaten/moeder/agent-boundary-{agent-naam}.md`
+- Inhoud: Herkomstverantwoording + de 4 boundary-regels
+- Dit deliverable is input voor Agent Smeder handoff
+
 **Foutafhandeling**:
 - Stopt als input te vaag is
 - Stopt als agent buiten `beleid.md` scope valt
 - Stopt als er overlap is met bestaande agent
+- Stopt als deliverable niet kan worden weggeschreven
 
-**Handoff**: Deze 4 regels gaan naar Agent Smeder, die vervolgens prompts/rol/runner ontwerpt.
+**Handoff**: Het deliverable bestand gaat naar Agent Smeder, die vervolgens prompts/charter/runner ontwerpt.
 
 ### 6. Governance Compliance
 Bron: `moeder-valideer-governance.prompt.md`
@@ -454,13 +460,30 @@ Actie:
 - **Agent Smeder** (`governance/rolbeschrijvingen/agent-smeder.md`) - Ontwerp en samenstelling van nieuwe agents op basis van boundaries
 - **Agent Smeder Runner** (`scripts/agent-smeder.py`) - Automatisering van agent-creatie workflow
 
-**Beschikbare prompts**:-beheer-git.prompt.md` - Repository beheer (Git)
+**Beschikbare prompts**:
+- `.github/prompts/moeder-beheer-git.prompt.md` - Repository beheer (Git)
 - `.github/prompts/moeder-configureer-github.prompt.md` - GitHub publicatie en configuratie
 - `.github/prompts/moeder-orden-workspace.prompt.md` - Workspace structuur ordenen
 - `.github/prompts/moeder-schrijf-beleid.prompt.md` - Beleid genereren
 - `.github/prompts/moeder-zet-agent-boundary.prompt.md` - Agent boundary definitie (4-regels output voor Agent Smeder)
-- `.github/prompts/moeder-valideer-governance.prompt.md` - Governance compliance validatieoundary (4-regels output voor Agent Smeder)
-- `.github/prompts/moeder-orden-workspace.prompt.md` - Workspace structuur ordenen
+- `.github/prompts/moeder-valideer-governance.prompt.md` - Governance compliance validatie
+
+## Herkomstverantwoording in deliverables
+
+**VERPLICHT**: Alle deliverable documenten die Moeder produceert in `docs/resultaten/moeder/` **MOETEN** beginnen met een sectie `## Herkomstverantwoording`.
+
+Dit geldt voor:
+- Agent boundary definities (`agent-boundary-{naam}.md`)
+- Beleid documenten die als deliverable worden opgeleverd
+- Governance validatie rapporten
+- Alle andere documentaire output
+
+De Herkomstverantwoording bevat:
+- Datum en tijd van creatie
+- Geraadpleegde bronnen (governance documenten, user input)
+- Korte toelichting op het deliverable
+
+Zonder Herkomstverantwoording is een deliverable **ongeldig**.
 
 ---
 

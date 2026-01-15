@@ -216,8 +216,18 @@ def op_zet_agent_boundary(
     """Operatie: zet-agent-boundary
     
     Definieert capability boundary voor nieuwe agent en slaat op als deliverable.
-    Output wordt opgeslagen in docs/resultaten/moeder/agent-boundary-{agent-naam}.md
-    voor traceerbaarheid en handoff naar Agent Smeder.
+    Output wordt VERPLICHT opgeslagen in docs/resultaten/moeder/agent-boundary-{agent-naam}.md
+    met Herkomstverantwoording voor traceerbaarheid en handoff naar Agent Smeder.
+    
+    De runner kan de boundary NIET genereren (dat is AI-werk), maar MOET het deliverable
+    wegschrijven zodra de boundary is gedefinieerd. De boundary-componenten worden
+    verwacht in opdracht parameter in het gestandaardiseerde 4-regel format.
+    
+    Verwacht format in opdracht:
+        agent-naam: {naam}
+        capability-boundary: {één zin}
+        doel: {één zin}
+        domein: {woord of frase}
     """
     _policy_gate_workspace_paths(workspace_root)
     _policy_gate_governance_exists(workspace_root)
@@ -237,22 +247,93 @@ def op_zet_agent_boundary(
     if not gewenste_capability:
         raise ValueError("--gewenste-capability is verplicht voor zet-agent-boundary operatie")
     
-    # Placeholder: in werkelijkheid zou hier de boundary door AI worden gegenereerd
-    # Voor nu gebruiken we opdracht als basis en verwachten we dat de gebruiker
-    # de boundary als onderdeel van opdracht formuleert
+    # Parseer opdracht voor boundary-componenten (verwacht 4-regel format)
+    boundary_lines = [line.strip() for line in opdracht.strip().split('\n') if line.strip()]
     
-    # Parseer opdracht voor boundary-componenten (verwacht format in opdracht)
-    # Dit is een vereenvoudigde implementatie - in productie zou dit door AI gebeuren
+    # Extract agent-naam uit eerste regel
+    agent_naam = None
+    for line in boundary_lines:
+        if line.startswith("agent-naam:"):
+            agent_naam = line.split(":", 1)[1].strip()
+            break
+    
+    if not agent_naam:
+        raise ValueError(
+            "opdracht moet 'agent-naam: {naam}' bevatten in het gestandaardiseerde 4-regel format"
+        )
+    
+    # Valideer dat opdracht alle 4 vereiste regels bevat
+    required_fields = ["agent-naam:", "capability-boundary:", "doel:", "domein:"]
+    for field in required_fields:
+        if not any(line.startswith(field) for line in boundary_lines):
+            raise ValueError(
+                f"opdracht moet '{field}' bevatten. "
+                f"Verwacht format: agent-naam, capability-boundary, doel, domein (elk op eigen regel)"
+            )
+    
+    # Maak deliverable directory aan
+    resultaten_dir = workspace_root / "docs" / "resultaten" / "moeder"
+    resultaten_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Bepaal deliverable pad
+    deliverable_path = resultaten_dir / f"agent-boundary-{agent_naam}.md"
+    
+    # Stop als deliverable niet kan worden weggeschreven (volgens charter foutafhandeling)
+    if deliverable_path.exists():
+        raise PolicyError(
+            f"Boundary deliverable bestaat al: {deliverable_path.relative_to(workspace_root).as_posix()}. "
+            f"Verwijder eerst het bestaande bestand of kies een andere agent-naam."
+        )
+    
+    # Genereer deliverable content met HV
+    from datetime import datetime
+    now = datetime.now()
+    timestamp = now.strftime("%Y-%m-%d %H:%M")
+    
+    content_lines = [
+        "# Agent Boundary Deliverable\n",
+        "\n",
+        "## Herkomstverantwoording\n",
+        "\n",
+        f"**Datum/tijd**: {timestamp}\n",
+        "\n",
+        "**Geraadpleegde bronnen**:\n",
+        f"- Gebruikersinput (aanleiding en gewenste-capability) - {timestamp}\n",
+        f"- `governance/beleid.md` (validatie) - {timestamp}\n",
+        f"- `governance/charters-agents/charter.moeder.md` (boundary definitie proces) - {timestamp}\n",
+        "\n",
+        "**Toelichting wijziging**:\n",
+        f"Nieuwe agent boundary gedefinieerd op verzoek van gebruiker.\n",
+        f"- Aanleiding: {aanleiding}\n",
+        f"- Gewenste capability: {gewenste_capability}\n",
+        f"- Boundary is gevalideerd tegen governance/beleid.md\n",
+        f"- Deliverable voldoet aan charter.moeder.md Section 5 (VERPLICHT wegschrijven)\n",
+        "\n",
+        "---\n",
+        "\n",
+        "## Agent Boundary\n",
+        "\n",
+    ]
+    
+    # Voeg boundary regels toe (exact zoals opgegeven in opdracht)
+    content_lines.append("```\n")
+    for line in boundary_lines:
+        content_lines.append(line + "\n")
+    content_lines.append("```\n")
+    
+    # Schrijf deliverable
+    deliverable_path.write_text("".join(content_lines), encoding="utf-8")
+    
     message = (
-        f"Agent boundary definitie - aanleiding: '{aanleiding}', "
-        f"capability: '{gewenste_capability}'. "
-        "Boundary moet handmatig worden vastgelegd in docs/resultaten/moeder/agent-boundary-<agent-naam>.md"
+        f"Agent boundary deliverable weggeschreven: "
+        f"{deliverable_path.relative_to(workspace_root).as_posix()}. "
+        f"Dit bestand is input voor Agent Smeder handoff."
     )
     
     return OperationResult(
         success=True,
         message=message,
-        artifacts=[],
+        artifacts=[deliverable_path],
     )
 
 

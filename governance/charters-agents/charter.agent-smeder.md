@@ -147,6 +147,17 @@ De Agent Smeder communiceert:
 - **Concreet**: levert altijd een duidelijke set artefacten of een stop-reden.
 - **Governance-bewust**: wijst op grenzen (o.a. geen publicatie door niet-Publisher agents).
 
+## Herkomstverantwoording in prompts
+
+**BELANGRIJK**: Agent Smeder produceert structurele bestanden (charters, prompts, runners), geen documentaire deliverables. Deze vereisen **geen** Herkomstverantwoording.
+
+**WEL VERPLICHT**: Alle prompt-contracten die Agent Smeder schrijft **MOETEN** specificeren dat de agents die deze prompts gebruiken documentaire output laten beginnen met `## Herkomstverantwoording`.
+
+Dit borgt dat:
+- Alle agents die deliverables produceren HV-compliant zijn
+- De verplichting expliciet in elk prompt-contract staat
+- Geen agent per ongeluk deliverables zonder HV produceert
+
 ---
 
 **Versie**: 1.2  

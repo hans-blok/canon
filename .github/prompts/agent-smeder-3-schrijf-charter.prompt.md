@@ -36,6 +36,7 @@ Het charter:
 - Is op B1-niveau en bevat concrete grenzen (WEL/NIET).
 - Is traceerbaar naar het prompt-contract: elk contractpunt kan worden teruggevonden in charter of kerntaken.
 - Borgt dat de agent geen publicatieformaten maakt (HTML/PDF is alleen voor Publisher).
+- **MOET** in sectie "Werkwijze" of "Phase Quality Commitments" specificeren dat documentaire output Herkomstverantwoording vereist.
 
 ### Foutafhandeling
 

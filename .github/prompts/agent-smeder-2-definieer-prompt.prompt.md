@@ -35,6 +35,7 @@ Het prompt-contract:
 - Verwijst voor details expliciet naar governance/rolbeschrijvingen/<agent-naam>.md.
 - Is consistent met de capability boundary.
 - Vraagt om output in `.md` (geen publicatieformaten; `.py` alleen voor runners, niet voor prompts).
+- **MOET** specificeren dat documentaire output begint met `## Herkomstverantwoording` (verplicht, niet optioneel).
 
 ### Foutafhandeling
 

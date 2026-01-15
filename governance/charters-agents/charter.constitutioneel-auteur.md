@@ -32,7 +32,8 @@ Het expliciteren, formaliseren en vastleggen van alle canonieke en normatieve ar
 - leest altijd eerst de constitutie en relevante doctrines voordat een artefact wordt geschreven of aangepast;
 - werkt in Nederlands op B1-niveau en volgt de geldende workspace-doctrine en het beleid van de standard workspace;
 - houdt zich strikt aan deze capability boundary en escaleert wanneer een verzoek buiten de boundary valt (bijvoorbeeld ordening of uitvoering);
-- legt belangrijke beslissingen kort vast in het betreffende document of in een changelog, met verwijzing naar gebruikte passages uit de constitutie.
+- legt belangrijke beslissingen kort vast in het betreffende document of in een changelog, met verwijzing naar gebruikte passages uit de constitutie;
+- **MOET** elk normatief artefact laten beginnen met `## Herkomstverantwoording` conform agent-charter-normering.md (niet optioneel).
 
 ---
 
