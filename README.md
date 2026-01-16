@@ -1,8 +1,8 @@
-# Standards — Agent Eco-systeem Governance
+# Canon — Agent Eco-systeem Governance
 
-**Versie**: 1.3.0  
+**Versie**: 1.4.0  
 **Status**: Active  
-**Last Updated**: 2025-12-30
+**Last Updated**: 2026-01-16
 
 Canon is the canonical source for the architectural foundations of agent-based systems.
 
@@ -166,4 +166,4 @@ git clone https://github.com/hans-blok/agent-services.git external/agent-service
 **Governance Owner**: Architecture & AI Enablement  
 **Agent Factory**: [Moeder](charters-agents/charter-moeder.md)  
 **Quality Gate**: [Canon-Curator](charters-agents/charter.canon-curator.md)  
-**Last Updated**: 2025-12-30 | **Version**: 1.3.0
+**Last Updated**: 2026-01-16 | **Version**: 1.4.0
