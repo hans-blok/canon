@@ -10,6 +10,15 @@ even/
 **/temp/
 temp/
 
+# Python cache and artifacts
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.egg-info/
+*.egg
+
 # IDE files
 .vscode/
 .idea/
@@ -17,3 +26,10 @@ temp/
 # OS files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs and editor swaps
+*.log
+*.swp
+*.swo
