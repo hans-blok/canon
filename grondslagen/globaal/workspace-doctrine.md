@@ -1,8 +1,8 @@
 # Workspace Doctrine — Architectuur en Standaard voor Workspaces
 
-**Versie**: 1.1.0  
+**Versie**: 1.1.1  
 **Status**: Actief  
-**Datum**: 2026-01-14  
+**Datum**: 2026-01-16  
 **Eigenaar**: Architecture & AI Enablement  
 **Type**: Normerend Doctrine-document
 
@@ -80,6 +80,8 @@ Deze principes zijn nader uitgewerkt in de twee onderliggende onderdelen van de 
 ## 3. Root-structuur voor workspaces
 
 Elke workspace **moet** de volgende root-structuur hebben:
+
+**UITZONDERING**: Deze structuur is niet van toepassing op de workspaces **agent-services** en **canon**. Deze workspaces volgen een eigen, specifieke architectuur buiten deze doctrine.
 
 ### 3.1 Verplichte folders in root
 
@@ -212,3 +214,4 @@ De workspace-doctrine implementeert en concretiseert de vereisten uit de constit
 |------------|--------|---------------------------------------------------------------------|-------------------|
 | 2026-01-14 | 1.0.0  | Eerste versie, bundelt workspace-architectuur en workspace-standaard in één workspace-doctrine | Charter Schrijver |
 | 2026-01-14 | 1.1.0  | Root-structuur aangescherpt: verplichte folders (.github, beleid, docs, scripts, logs), verplichte root-bestanden (.gitignore, README.md, <workspace>.ping, state-<naam-workspace>.md), Herkomstverantwoording sectie toegevoegd | Constitutioneel Auteur |
+| 2026-01-16 | 1.1.1  | UITZONDERING toegevoegd: workspace-doctrine structuur niet van toepassing op workspaces agent-services en canon | Canon Curator |

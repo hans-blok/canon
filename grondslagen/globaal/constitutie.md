@@ -1,8 +1,27 @@
 # Constitutie van het Eco-systeem
 
-**Versie**: 1.1.0
+**Versie**: 1.2.0
 **Status**: Actief
-**Datum**: 2026-01-08
+**Datum**: 2026-01-16
+
+---
+
+## Herkomstverantwoording
+
+Dit normatief artefact is afgeleid op basis van de volgende bronnen:
+
+**Geraadpleegde bronnen**:
+- Eerdere versie constitutie.md (versie 1.1.0, gelezen op 2026-01-14)
+- workspace-doctrine.md (versie 1.1.0, gelezen op 2026-01-16)
+- agent-charter-normering.md (versie 1.2.0, gelezen op 2026-01-16)
+- Handoff: handoff-runner-constitutioneel-auteur-20260115-0936 (context voor herstructurering)
+
+**Wijzigingen in versie 1.2.0**:
+- Artikel 2 (Workspace Structuur) ingekort tot verwijzing naar workspace-doctrine.md (detail naar doctrine verplaatst)
+- Artikel 4 (Automatisering en Orkestratie) verplaatst naar Artikel 2 (prioriteitsherordening)
+- Artikelen hernummerd (3-8 → 3-8)
+- Herkomstverantwoording sectie toegevoegd conform agent-charter-normering.md
+- Verwijzingen naar gerelateerde doctrines toegevoegd
 
 ---
 
@@ -21,25 +40,26 @@ Waar de **Gedragscode** zich richt op gedrag, principes en professionele normen,
 
 ---
 
-## Artikel 2 — Workspace Structuur
+## Artikel 2 — Automatisering en Orkestratie
 
-1.  **Standaardisatie**: Elke workspace volgt een gestandaardiseerde mappenstructuur om voorspelbaarheid te garanderen. De `standards` repository dient als blauwdruk.
-2.  **Artefacten**: Alle gegenereerde output (documenten, code, modellen) wordt opgeslagen in de `/artefacten/` map.
-3.  **Governance**: Governance-documenten (zoals deze Constitutie en de Gedragscode) bevinden zich in de `/governance/` map.
-4.  **Charters voor Geautomatiseerde Rollen**: Charters voor geautomatiseerde rollen bevinden zich in de `/charters.agents/` map.
-5.  **Tijdelijke Bestanden**: Bestanden in een `temp` map zijn tijdelijk en niet duurzaam. Normatieve documenten (zoals constitutie, gedragscode, beleid, charters en doctrines) verwijzen nooit naar concrete bestanden in `temp`.
-6.  **Activatie & Definitie van Geautomatiseerde Rollen**:
-    *   Geautomatiseerde rollen worden in VS Code geactiveerd via het `/` commando (bijv. `/find`).
-    *   De definitie van een geautomatiseerde rol (de prompt die het gedrag bepaalt) staat in `.github/agents/std.<fase>.<naam>.agent.md`.
-    *   De koppeling voor activatie wordt gelegd in `.github/prompts/std.<fase>.<naam>.prompt.md`.
+1.  **Canon**: Voor alle agents in alle processen is de canon van toepassing. Het beleid in elke workspace verwijst naar deze consitutie om te borgen dat de canon op de juiste manier wordt gevolgd.
+2.  **Canon Repository Synchronisatie**: Wanneer de centrale canon repository (`https://github.com/hans-blok/canon.git`) wordt geraadpleegd, wordt altijd eerst een `git pull` uitgevoerd om te waarborgen dat de meest recente governance, charters en definities worden gebruikt. Wanneer de canon niet kan worden gelezen wordt het proces afgebroken en wordt een nette foutmelding gegeven.
+1.  **Governance Lezen**: Van toepassing voor alle geautomatiseerde processen en handmatige processen zijn de grondslagen die als onderdeel van de canon zijn vastgelegd. 
+3.  **Samenwerking**: Automatisering werkt samen met een duidelijke taakverdeling, minimale overlap en expliciete afhankelijkheden.
+4.  **Conflictmelding**: Wanneer een geautomatiseerd proces conflicten vindt tussen documenten of regels, meldt het dit direct en expliciet.
+5.  **Einddoel**: Het eco-systeem streeft naar een toekomst waarin een feature met slechts vijf regels input veilig en robuust kan worden gegenereerd.
+6.  **Plannen Vastleggen**: Wanneer een geautomatiseerd proces wordt gevraagd om een plan (ontwerp, voorstel of werk-in-uitvoering), legt dat proces dit plan als Markdown-bestand vast in de `temp/` map van de betreffende workspace. Een mens beoordeelt het plan. Na beoordeling kan het plan uit `temp/` worden verwijderd. Inhoud die blijvend nodig is, wordt vastgelegd in duurzame documenten (bijvoorbeeld `README.md`), niet in `temp`.
 
 ---
 
-## Artikel 3 — Kwaliteit van Specificaties en Modellen
+## Artikel 3 — Workspace Structuur
 
-1.  **Ondubbelzinnig**: Specificaties moeten testbaar, volledig en consistent zijn.
-2.  **Technologie-Agnostisch**: Requirements zijn technologie-agnostisch. Implementatiedetails horen niet in de specificatie.
-3.  **Traceerbaarheid**: Werkstromen en tooling bewaken de traceerbaarheid tussen requirements, ontwerp en taken.
+Zie: [grondslagen/globaal/workspace-doctrine.md](grondslagen/globaal/workspace-doctrine.md)
+
+---
+
+## Artikel 4 — Kwaliteit en compliance
+
 4.  **Aannames**: Onzekerheden worden altijd expliciet gemarkeerd. Een geautomatiseerd proces mag maximaal drie aannames tegelijk hanteren voordat escalatie naar een mens verplicht is.
 5.  **Professionele Normen**: Alle aanbevelingen en artefacten ondersteunen iteratief werken met focus op waarde en snelle feedback, en dragen bij aan:
     *   duurzaam ontwerp;
@@ -54,24 +74,12 @@ Waar de **Gedragscode** zich richt op gedrag, principes en professionele normen,
 
 ---
 
-## Artikel 4 — Automatisering en Orkestratie
-
-1.  **Governance Lezen**: Geautomatiseerde processen lezen bij aanroep altijd de relevante governance-bestanden (`constitutie.md`, `gedragscode.md`, `beleid.md`) om hun acties te kaderen.
-2.  **Standards Repository Synchronisatie**: Wanneer de centrale standards repository (`https://github.com/hans-blok/standard.git`) wordt geraadpleegd, wordt altijd eerst een `git pull` uitgevoerd om te waarborgen dat de meest recente governance, charters en definities worden gebruikt.
-3.  **Samenwerking**: Automatisering werkt samen met een duidelijke taakverdeling, minimale overlap en expliciete afhankelijkheden.
-4.  **Conflictmelding**: Wanneer een geautomatiseerd proces conflicten vindt tussen documenten of regels, meldt het dit direct en expliciet.
-5.  **Einddoel**: Het eco-systeem streeft naar een toekomst waarin een applicatie met slechts vijf regels input veilig en robuust kan worden gegenereerd.
-6.  **Plannen Vastleggen**: Wanneer een geautomatiseerd proces wordt gevraagd om een plan (ontwerp, voorstel of werk-in-uitvoering), legt dat proces dit plan als Markdown-bestand vast in de `temp/` map van de betreffende workspace. Een mens beoordeelt het plan. Na beoordeling kan het plan uit `temp/` worden verwijderd. Inhoud die blijvend nodig is, wordt vastgelegd in duurzame documenten (bijvoorbeeld `README.md`), niet in `temp`.
-
----
-
 ## Artikel 5 — Wijzigingsbeheer
 
 1.  **Menselijke Controle**: Inhoudelijke wijzigingen aan de Constitutie (nieuwe regels, gewijzigde principes) mogen **door een mens** en door **de agent constitutioneel-auteur** worden gedaan.
-2.  **Redactionele Aanpassingen**: Alleen een daartoe geautoriseerde rol (de Moeder in de `standard` workspace) mag redactionele verbeteringen doen (layout, grammatica, spelling).
 3.  **Verbod voor Automatisering**: Geautomatiseerde tooling of processen mogen de Constitutie op geen enkele wijze wijzigen.
 4.  **Versiebeheer**: Versies worden beheerd via duidelijke versie-nummers en een wijzigingslog.
-
+5. Alle wijzigingen in de canon kennen een herkomstverantwoording. Dit is verder uitgewerkt in doctrine-handoff-creatie-en-overdrachtsdiscipline.md.
 ---
 
 ## Artikel 6 — Tegen Generalisatie
@@ -160,3 +168,44 @@ Waar de **Gedragscode** zich richt op gedrag, principes en professionele normen,
 1.  **Onmiddellijke Werking**: Deze Constitutie geldt onmiddellijk voor alle bestaande en toekomstige repositories, workflows en processen.
 2.  **Prevalentie**: Bij conflict tussen deze Constitutie en lagere documenten, geldt altijd de Constitutie.
 3.  **Integriteit**: Automatisering mag deze Constitutie niet negeren, verzwakken of interpreteren op een manier die haar kracht vermindert.
+
+---
+
+## Wijzigingslog
+
+| Datum      | Versie | Wijziging                                                           | Auteur            |
+|------------|--------|---------------------------------------------------------------------|-------------------|
+| 2026-01-08 | 1.1.0  | Eerste publieke versie                                               | Constitutioneel Auteur |
+| 2026-01-16 | 1.2.0  | Artikel 2 ingekort tot verwijzing naar workspace-doctrine; Artikel 4 (Automatisering) verplaatst naar Artikel 2; artikelen hernummerd | Canon Curator |
+
+---
+
+## Gerelateerde Doctrines en Normatieve Artefacten
+
+Deze Constitutie is de bindende grondslag voor het gehele normatieve stelsel. De volgende documenten in `grondslagen/globaal/` concretiseren en implementeren deze Constitutie:
+
+### Workspace Governance
+
+- **[workspace-doctrine.md](workspace-doctrine.md)**  
+  Standaardisatie van mappenstructuur, naamgeving en organisatie voor alle workspaces. Implementeert Artikel 3 (Workspace Structuur). Verplicht voor alle document-repositories.
+
+- **[agent-charter-normering.md](agent-charter-normering.md)**  
+  Structuur en vereisten voor agent-charters. Waarborgt consistentie en kwaliteit van alle agent-definities conform Artikel 1 (Hiërarchie).
+
+### Handoff & Uitvoering
+
+- **[doctrine-handoff-creatie-en-overdrachtsdiscipline.md](doctrine-handoff-creatie-en-overdrachtsdiscipline.md)**  
+  Regels voor handoff-creatie en handoff-validatie tussen agents. Implementeert Artikel 2 (Automatisering) en het principe van duidelijke afhankelijkheden.
+
+- **[doctrine-runner-discipline-en-runner-kernel.md](doctrine-runner-discipline-en-runner-kernel.md)**  
+  Gedragsregels voor agents en runners (orchestrators). Definieert hoe automatisering zich gedraagt conform Artikel 2 (Governance Lezen, Conflictmelding).
+
+### Tijdstempel & Geldigheid
+
+- **[doctrine-tijdreferentie-en-contextuele-geldigheid.md](doctrine-tijdreferentie-en-contextuele-geldigheid.md)**  
+  Vastlegging van hoe tijdreferenties worden beheerd en hoe normatieve artefacten hun actualiteit behouden. Ondersteunt traceerbaarheid conform Artikel 1 (Doel).
+
+### State & Audit
+
+- **[doctrine-workspace-state-en-legitimiteit.md](doctrine-workspace-state-en-legitimiteit.md)**  
+  State-logging en audit trail voor alle wijzigingen aan canonieke artefacten. Waarborgt integriteit conform Artikel 1 (Traceerbaarheid).

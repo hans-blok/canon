@@ -101,7 +101,7 @@ die expliciet verwijst naar:
 - de gebruikte tijdreferentie
 
 Herkomstverantwoording zonder handoff-verwijzing
-is ongeldig.
+is nu nog geldig. Maar dit is tijdelijk.
 
 ---
 
