@@ -1,4 +1,4 @@
-# Normering voor Agent Charters
+# Doctrine Normering voor Agent Charters
 
 **Type**: Normatief Governance Document  
 **Repository**: standards  
@@ -34,7 +34,7 @@ Dit normatief artefact is afgeleid op basis van de volgende bronnen:
 ### Missie
 Deze **Normering voor Agent Charters** definieert **wat een geldig Agent Charter is** binnen het agent eco-systeem. Dit document beschrijft de verplichte structuur, inhoud, terminologie en verantwoordelijkheden die elk agent-charter moet bevatten om te functioneren binnen het ecosysteem. Deze standaard fungeert als normatief kader voor alle agent-charters en waarborgt consistentie, volledigheid en kwaliteit.
 
-**Belangrijk**: Dit is een **workspace-overstijgende standaard** (rules abstraction) en hoort thuis in artefacten/0-governance/ van de standards-repository. Alle concrete agent-charters (capabilities) **MOETEN** aan dit document conformeren.
+**Belangrijk**: Dit is een **workspace-overstijgende standaard** (rules abstraction) en is onderdeel van de grondslagen die globaal van toepasing zijn. Alle concrete agent-charters (capabilities) **MOETEN** aan dit document conformeren.
 
 ### Primaire Doelstellingen
 - Definiëren van de verplichte structuur voor alle agent-charters

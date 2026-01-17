@@ -1,16 +1,30 @@
 ## Doctrine — Handoff Creation en Overdrachtsdiscipline
 
-### Status
-- Type: Doctrine
-- Geldigheid: Canoniek
-- Scope: Alle agents, runners en workspaces
-- Afgeleid van:
-  - Doctrine — Workspace State & Legitimiteit
-  - Doctrine — Tijdreferentie en Contextuele Geldigheid
+**Versie**: 1.1.0  
+**Status**: Actief  
+**Datum**: 2026-01-16  
+**Eigenaar**: Architecture & AI Enablement  
+**Type**: Normerend Doctrine-document
 
 ---
 
-### 1. Doel en functie van handoffs
+## Herkomstverantwoording
+
+Dit normatief artefact is afgeleid op basis van de volgende bronnen:
+
+**Geraadpleegde bronnen**:
+- Doctrine — Workspace State & Legitimiteit (gelezen op 2026-01-16)
+- Doctrine — Tijdreferentie en Contextuele Geldigheid (gelezen op 2026-01-16)
+- Eerdere versie doctrine-handoff-creatie-en-overdrachtsdiscipline.md (versie 1.0.0, gelezen op 2026-01-16)
+- Vereisten voor artefact-herkomst structuur (ontvangen op 2026-01-16)
+
+**Wijzigingen in versie 1.1.0**:
+- Metagegevens header toegevoegd (Versie, Status, Datum, Eigenaar, Type)
+- Herkomstverantwoording sectie toegevoegd conform agent-charter-normering.md
+- Nieuwe sectie 7 toegevoegd: Herkomst-structuur voor afgeleide artefacten (Status, Input-tracking, Menselijke validatie)
+- Originele secties hernummerd (7 → 8, 8 → 9)
+
+---
 
 Een **handoff** is een formeel overdrachtsmechanisme
 tussen rollen of agents binnen het ecosysteem.
@@ -105,7 +119,50 @@ is nu nog geldig. Maar dit is tijdelijk.
 
 ---
 
-### 7. Afhandeling en status
+### 7. Herkomst-structuur voor afgeleide artefacten
+
+Elk artefact dat wordt gegenereerd of geproduceerd door een agent
+**moet** een gestructureerde **Herkomst**-sectie bevatten.
+
+Deze sectie vastlegt de volledige provenance en status van het artefact:
+
+```
+## Herkomst
+
+- Gegenereerd door: <agent-id of rol>
+- Agent charter: <verwijzing naar agent charter>
+- Fase: <SAFe fase, bijv. Design, Implementation>
+- Input-artefacten:
+  - <Naam en verwijzing van input-artefact A>
+  - <Naam en verwijzing van input-artefact B>
+  - (voeg toe als van toepassing)
+- Datum: <YYYY-MM-DD>
+- Handoff-referentie: <handoff-id indien van toepassing>
+- Status:
+  - ☐ Advies (aanbeveling, niet bindend)
+  - ☐ Concept (werk in uitvoering, onder review)
+  - ☐ Vastgesteld (definitief goedgekeurd)
+- Menselijke validatie:
+  - ☐ Nog niet gevalideerd
+  - ☐ Gevalideerd door <naam/rol en datum>
+```
+
+**Toelichting**:
+- **Gegenereerd door**: Identificeert de bron (agent, rol of systeem)
+- **Agent charter**: Verwijzing naar het charter dat de agent definieert
+- **Fase**: Situeert het artefact in de SAFe lifecycle
+- **Input-artefacten**: Maakt de afhankelijkheden expliciet (traceerbaarheid)
+- **Datum**: Creatie- of publicatiedatum (conform doctrine-tijdreferentie)
+- **Handoff-referentie**: Linkt het artefact aan de legitimatiebron (handoff)
+- **Status**: Markeert het rijpniveau van het artefact
+- **Menselijke validatie**: Vastlegging van goedkeuring door verantwoordelijke persoon
+
+Deze structuur waarborgt dat elk artefact volledig traceerbaar is
+naar zijn bron, input, fase en goedkeuringsstatus.
+
+---
+
+### 8. Afhandeling en status
 
 De handoff doorloopt expliciet de volgende statussen:
 
@@ -119,7 +176,7 @@ en zijn navolgbaar.
 
 ---
 
-### 8. Slotbepaling
+### 9. Slotbepaling
 
 Handoffs zijn geen administratief hulpmiddel,
 maar een **legitimatiemechanisme**.
@@ -130,3 +187,12 @@ en verantwoordelijkheid toetsbaar.
 
 Handelen zonder handoff
 is handelen zonder legitimiteit.
+
+---
+
+## Wijzigingslog
+
+| Datum      | Versie | Wijziging                                                           | Auteur            |
+|------------|--------|---------------------------------------------------------------------|-------------------|
+| 2026-01-14 | 1.0.0  | Eerste versie: handoff-discipline en overdrachtsvereisten          | Constitutioneel Auteur |
+| 2026-01-16 | 1.1.0  | Herkomst-structuur voor artefacten toegevoegd (sectie 7); metadata header en herkomstverantwoording toegevoegd; secties hernummerd | Canon Curator |
