@@ -3,29 +3,39 @@
 **Type**: Normatief Governance Document  
 **Repository**: standards  
 **Identifier**: standards.governance.agent-charter-normering  
-**Version**: 1.2.0  
+**Version**: 1.2.3  
 **Status**: Active  
-**Last Updated**: 2026-01-14  
+**Last Updated**: 2026-01-18  
 **Owner**: Architecture & AI Enablement
 
 ---
 
 ## Herkomstverantwoording
 
-Dit normatief artefact is afgeleid op basis van de volgende bronnen:
+Dit normatief artefact is bijgewerkt op basis van de volgende geraadpleegde bronnen. De wijzigingen zijn uitgevoerd op 2026-01-17 ter verduidelijking van workspace-beleid als verplichte agent-initialisatie-stap.
 
 **Geraadpleegde bronnen**:
-- normatief-stelsel/globaal/constitutie.md (gelezen op 2026-01-14, exacte tijd niet beschikbaar)
-- normatief-stelsel/globaal/workspace-doctrine.md (versie 1.1.0, gelezen op 2026-01-14, exacte tijd niet beschikbaar)
-- Eerdere versie agent-charter-normering.md (versie 1.1.2, gelezen op 2026-01-14, exacte tijd niet beschikbaar)
-- Gebruikersinstructies voor tijd/context normering (ontvangen op 2026-01-14, exacte tijd niet beschikbaar)
+- Constitutie Mandarin (versie 1.2.1, gelezen op 2026-01-18, exacte tijd niet beschikbaar)
+- workspace-doctrine.md (versie 1.1.0, gelezen op 2026-01-18, exacte tijd niet beschikbaar)
+- Eerdere versie doctrine-agent-charter-normering.md (versie 1.2.0, gelezen op 2026-01-18, exacte tijd niet beschikbaar)
+- templates/type agents.md (referentie-tabel voor agent-categorisering inclusief beheeragent, gelezen op 2026-01-18, exacte tijd niet beschikbaar)
 
-**Toelichting tijdreferenties**: Conform de nieuwe norm "Tijd is Context" (sectie 11.1) worden geen tijdstippen ingevuld indien deze niet expliciet beschikbaar zijn. Alleen de datum (2026-01-14) is bekend uit de beschikbare context.
+**Toelichting tijdreferenties**: Conform de norm "Tijd is Context" (sectie 11.1) worden geen tijdstippen ingevuld indien deze niet expliciet beschikbaar zijn. Alleen de datum (2026-01-18) is bekend uit de beschikbare context.
 
-**Wijzigingen in versie 1.2.0**:
-- Herkomstverantwoording sectie toegevoegd conform eigen normering
-- Nieuwe norm toegevoegd: Tijd is context en wordt nooit door agents afgeleid; bij ontbrekende tijdreferentie melden agents dit expliciet
-- Timestamps aangepast conform nieuwe normering: alleen datum vermeld indien tijd niet expliciet beschikbaar is
+**Wijzigingen in versie 1.2.1**:
+- Nieuwe norm toegevoegd: sectie 12.1 "Norm: Workspace Beleid als Agent Initialisatie" — vastlegt dat elke agent vóór activatie het beleid van de workspace moet lezen en aldaar doorverwezen wordt naar de context van zijn werkgebied
+- Verduidelijking dat workspace-beleid de eerste gezagsbron is waarmee agents werken voordat ze hun charter activeren
+- Conformiteit met Constitutie 1.2.1 (artikel 2 over canon en governance lezen)
+
+**Update 2026-01-18**:
+- Nieuwe norm toegevoegd: sectie 12.2 "Norm: Agent-Soorten en Gezag-Relatie" — vastlegt het onderscheid tussen adviserende en uitvoerende agents en hun relatie tot gezag en risico
+- Integratie van referentie-tabel type agents.md in normatief kader
+
+**Update 2026-01-18 (verduidelijking)**:
+- Beheeragent toegevoegd als derde agent-soort in sectie 12.2
+- Onderscheid tussen inhoud-wijziging (uitvoerend) en structuur-wijziging (beheer)
+- Definities, risico's en charter-consequenties vastgelegd
+- templates/type agents.md bijgewerkt als referentie-bron
 
 ---
 
@@ -289,6 +299,113 @@ Deze componenten zijn logisch gescheiden maar inhoudelijk consistent:
   - de prompts verschillende, duidelijk gedefinieerde ingangen of scenario's bedienen (bijvoorbeeld: schrijven, valideren, publiceren);
   - er geen tegenstrijdige instructies tussen prompts bestaan.
 
+### Norm: Workspace Beleid als Agent Initialisatie (sectie 12.1)
+
+**Kernprincipe**: Elke Mandarin-agent leest vóór activatie het beleid van de workspace waarin hij opereert. Dit beleid is de eerste gezagsbron en bepaalt de grenzen en context van de agent.
+
+**Verplichte stappen voordat een agent actief wordt**:
+
+1. **Beleid Lezen**: De agent leest het betreffende workspace-beleid volledig.
+   - Het beleid bevat: scope, grenzen, governance-regels en verwijzingen naar canonieke documenten.
+   - Het beleid verwijst naar de Constitutie.
+   - Het beleid verwijst naar de workspace-specifieke repository of context waarin de agent opereert.
+
+2. **Doorverwijzing naar Workspace/Repository**: Na het lezen van het beleid wordt de agent doorverwezen naar de betreffende workspace of repository.
+   - De workspace kan zijn: een document-repository, een projectfolder, een governance-register, etc.
+   - Deze verwijzing bepaalt waar de agent zich bevindt en welke grenzen gelden.
+   - De workspace-context staat expliciet in het beleid vermeld.
+
+3. **Charter Activatie**: Pas na het lezen van het beleid en de context van de workspace kan de agent zijn eigen charter en prompts activeren.
+   - Niet eerder.
+
+**Gevolgen**:
+- Agents die het workspace-beleid niet kennen, mogen niet opereren.
+- Agents mogen zich nooit buiten hun workspace-context bewegen tenzij het beleid dit expliciet toestaat.
+- Escalatie naar hoger gezag (Constitutie, Moeder Agent) gebeurt alleen als het workspace-beleid dit vereist.
+
+**Normatief Fundament**:
+- Zie Constitutie Artikel 2 (Automatisering en orkestratie), punt 2 (Governance lezen).
+- Zie Constitutie Artikel 1 (Werkingssfeer en hiërarchie), punt 1 (Bindend).
+
+### Norm: Agent-Soorten en Gezag-Relatie (sectie 12.2)
+
+**Kernprincipe**: Mandarin-agents vallen in drie onderscheiden **soorten** (niet: types) met fundamenteel verschillende verantwoordelijkheden, gezagsgronden en risicoprofiel.
+
+**Terminologische Opmerking**: Het begrip "agent-soort" is bewust gekozen boven "agent-type". Dit onderscheid is normatief:
+- "Type" suggereert technische, neutrale categorisering (programmeer-syntax)
+- "Soort" weerspiegelt het normatieve, waarde-geladen karakter van deze classificatie
+- Agent-soorten zijn **niet interchangeable** — ze hebben fundamenteel verschillende gezags-structuren
+- Een agent kan niet zomaar van soort veranderen zonder normatief proces en herkomstverantwoording
+- Zie templates/type agents.md voor uitgebreide uitleg van deze terminologische keuze
+
+**Agent-Soorten**:
+
+| Aspect | Adviserend Agent | Uitvoerend Agent | Beheeragent |
+|--------|------------------|------------------|-------------|
+| **Rol** | Beschouwend | Inhoudelijk | Operationeel |
+| **Macht** | Geen | Beperkt | Beperkt |
+| **Gezag** | Inzicht | Mandaat | Beheer |
+| **Wijzigt inhoud** | Nee | Ja | Nee |
+| **Wijzigt structuur** | Nee | Nee | Ja |
+| **Risico** | Laag | Hoog | Hoog |
+| **Output** | Voorstel | Wijziging | Structuur-update |
+
+**Definitie: Adviserend Agent**
+- Biedt inzicht, analyse en voorstel zonder directe macht tot wijziging
+- Gezag ontleent aan de kwaliteit van inzicht en beredenering
+- Levert adviserende output; implementatie is verantwoordelijkheid van ander (mens, ander agent of Moeder)
+- Wijzigt noch inhoud noch structuur
+- Risico is laag omdat geen directe wijziging plaatsvindt
+- Voorbeelden: analyse-agent, review-agent, validator-agent
+- RACI-rol: **Adviser** (Consulted, Informed)
+
+**Definitie: Uitvoerend Agent**
+- Voert inhoudelijke wijzigingen uit in documenten en artefacten
+- Gezag ontleent aan expliciet mandaat uit charter en workspace-beleid
+- Levert wijzigingen op in inhoudelijke artefacten; verantwoordelijkheid voor naleving van regels ligt bij de agent
+- Wijzigt inhoud (documenten, datasets) maar niet structuur (governance, architectuur)
+- Risico is hoog omdat wijzigingen impact hebben op inhoud en gebruikers
+- Voorbeelden: schrijver-agent, updater-agent, curator-agent
+- RACI-rol: **Responsible** of **Accountable**
+
+**Definitie: Beheeragent**
+- Beheert technische en governance-structuur, niet de inhoud zelf
+- Gezag ontleent aan beheer-mandaat en technische autoriteit
+- Levert structuur-updates op (configurations, mappings, governance-rules, workspace state)
+- Wijzigt structuur (governance-regels, technische opstellingen) maar niet inhoud
+- Risico is hoog omdat structuurwijzigingen impact hebben op heel ecosysteem
+- Voorbeelden: state-manager-agent, config-agent, governance-updater-agent
+- RACI-rol: **Accountable** (voor technische operaties)
+
+**Gevolgen voor Charter-Design**:
+
+1. **Adviserende agents**:
+   - Mogen input lezen uit workspaces
+   - Mogen voorstellen, opmerkingen en analyses schrijven naar `temp/` of review-documenten
+   - Mogen NIET rechtstreeks wijzigen in canonieke artefacten
+   - Escalatie naar uitvoerend of beheer-agent of mens is standaard
+
+2. **Uitvoerende agents**:
+   - Hebben expliciet mandaat in charter
+   - Mogen inhoudelijke wijzigingen doorvoeren conform hun charter
+   - **MOETEN** alle wijzigingen loggen in workspace state
+   - Mogen niet buiten hun charter-scope wijzigen
+   - Mogen niet structuur wijzigen (dat is beheeragent-domein)
+
+3. **Beheeragents**:
+   - Hebben expliciet beheer-mandaat in charter
+   - Mogen structuur-wijzigingen doorvoeren conform hun charter
+   - **MOETEN** alle wijzigingen loggen in workspace state met volledige audit trail
+   - Mogen niet inhoudelijke artefacten wijzigen (dat is uitvoerend-agent-domein)
+   - Mogen niet willekeurig workspace-beleid wijzigen
+
+**Normatief Fundament**:
+- Zie Constitutie sectie "Waar Mandarin-agenten geen gezag hebben" — mandaat, niet macht, bepaalt autoriteit
+- Zie Constitutie Artikel 7 (Taal en terminologie) — taalgebruik is architecturale keuze; "soort" is semantisch superieur aan "type" omdat het gezag en verantwoordelijkheid expliciet maakt
+- Zie Constitutie Artikel 4 (Wijzigingsbeheer) — alle wijzigingen kennen herkomstverantwoording
+- Zie Constitutie Artikel 2 (Automatisering en orkestratie) — duidelijke afhankelijkheden en escalatie
+- Zie templates/type agents.md — referentie-classificatie met uitgebreide toelichting terminologische keuze
+
 ### Norm voor agent-resultaten: Herkomstverantwoording
 
 Elke agent die een documentair resultaat oplevert (bijvoorbeeld een Markdown-bestand in `docs/` of `artefacten/`) **MOET** dat resultaat laten beginnen met een sectie **"Herkomstverantwoording"**.
@@ -511,17 +628,33 @@ Voor elke output:
 
 ---
 
+---
+
+## Change Log
+
+| Datum      | Versie | Wijziging                                                           | Auteur            |
+|------------|--------|---------------------------------------------------------------------|-------------------|
+| 2026-01-14 | 1.2.0  | Herkomstverantwoording toegevoegd; norm "Tijd is Context" vastgelegd | Architecture Team |
+| 2026-01-17 | 1.2.1  | Norm: Workspace Beleid als Agent Initialisatie toegevoegd (sectie 12.1); hiërarchie bijgewerkt | Constitutioneel Auteur |
+| 2026-01-18 | 1.2.2  | Norm: Agent-Soorten en Gezag-Relatie toegevoegd (sectie 12.2); type agents.md geïntegreerd | Constitutioneel Auteur |
+| 2026-01-18 | 1.2.3  | Beheeragent toegevoegd als derde agent-soort; onderscheid inhoud vs. structuur vastgelegd | Constitutioneel Auteur |
+
+---
+
 ## 13. Hiërarchie en Autoriteit
 
 De volgende hiërarchie is leidend:
 
 1. **Constitutie** — onveranderlijke, bindende afspraken
-2. **Workspace Architecture Charter** — workspace-structuur en werkwijze
-3. **Agent Charter Standard** (dit document) — structuur van agent-charters
-4. **Individuele Agent Charters** — gedrag en verantwoordelijkheden van specifieke agents
-5. **Implementaties / Prompts** — technische uitvoering
+2. **Workspace Beleid** — scope, grenzen en governance van elke workspace (lezen voordat agent actief wordt; zie norm 12.1)
+3. **Workspace Architecture Charter** — workspace-structuur en werkwijze
+4. **Agent Charter Standard** (dit document) — structuur van agent-charters
+5. **Individuele Agent Charters** — gedrag en verantwoordelijkheden van specifieke agents
+6. **Implementaties / Prompts** — technische uitvoering
 
 **Lagere niveaus mogen hogere niveaus niet tegenspreken.**
+
+**Opmerking**: Workspace Beleid is nu expliciet opgenomen in de hiërarchie omdat het de eerste gezagsbron is die agents lezen vóór activatie (zie norm 12.1).
 
 ---
 
