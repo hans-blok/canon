@@ -1,8 +1,8 @@
 # Workspace Doctrine — Architectuur en Standaard voor Workspaces
 
-**Versie**: 1.1.1  
+**Versie**: 1.2.0  
 **Status**: Actief  
-**Datum**: 2026-01-16  
+**Datum**: 2026-01-18  
 **Eigenaar**: Architecture & AI Enablement  
 **Type**: Normerend Doctrine-document
 
@@ -15,13 +15,18 @@ Dit normatief artefact is afgeleid op basis van de volgende bronnen:
 **Geraadpleegde bronnen**:
 - artefacten/0-governance/workspace-architectuur.md (versie 1.0.0, gelezen op 2026-01-14 14:30 CET)
 - artefacten/0-governance/workspace-standaard.md (gelezen op 2026-01-14 14:30 CET)
-- artefacten/0-governance/constitutie.md (gelezen op 2026-01-14 14:32 CET)
+- artefacten/0-governance/constitutie.md (versie 1.2.1, gelezen op 2026-01-18 14:20 CET)
 - Gebruikersinstructies voor root-structuur aanpassing (ontvangen op 2026-01-14 14:35 CET)
+- Gebruikersinstructies voor locatie agent-resultaten (ontvangen op 2026-01-18 14:20 CET)
 
 **Wijzigingen in versie 1.1.0**:
 - Root-structuur specificatie aangescherpt: verplichte folders (.github, beleid, docs, scripts) en logs (in gitignore)
 - Root-bestanden gespecificeerd: .gitignore, README.md, <workspace>.ping, state-<naam-workspace>
 - Herkomstverantwoording sectie toegevoegd conform agent-charter-normering.md
+
+**Wijzigingen in versie 1.2.0**:
+- Norm toegevoegd voor locatie van agent-resultaten (sectie 5.1): resultaten van value stream Kennispublicatie → docs/, templates → altijd in templates/
+- Herkomstverantwoording bijgewerkt met constitutie v1.2.1 en gebruikersinstructies
 
 ---
 
@@ -164,6 +169,46 @@ Wanneer in charters, prompts of beleid wordt verwezen naar de "workspace-standaa
 
 ---
 
+## 5.1 Norm: Locatie van Agent-Resultaten
+
+**Kernprincipe**: Agent-resultaten worden opgeslagen op voorspelbare locaties conform hun value stream en artefact-type. Dit waarborgt traceerbaarheid en consistente structuur (kernprincipe 3 van deze doctrine).
+
+**Norm**:
+
+1. **Value Stream Kennispublicatie** → **docs/**  
+   Alle agent-resultaten die vallen binnen de value stream Kennispublicatie (artikelen, documentatie, analyses, kennisoverdracht) worden opgeslagen in de `docs/` folder en subfolders daarvan, conform de structuur `docs/resultaten/{agent-naam}/`.
+
+2. **Templates** → **altijd templates/**  
+   **Uitzondering**: Templates vormen altijd een uitzondering op de bovenstaande regel. Alle templates (ongeacht value stream of agent-soort) worden opgeslagen in de `templates/` folder. Dit geldt voor:
+   - Charter-templates
+   - Document-templates  
+   - Prompt-templates
+   - Fase-charter-templates
+   - Alle andere herbruikbare structuren
+
+**Motivatie**:
+- **Voorspelbaarheid**: Agents en mensen weten waar resultaten te vinden zijn
+- **Traceerbaarheid**: Resultaten zijn herleidbaar naar agent en value stream (kernprincipe 3)
+- **Scheiding van concerns**: Templates zijn herbruikbare structuren en horen daarom in een aparte folder, onafhankelijk van de value stream waarbinnen ze ontstaan
+- **Consistentie met Constitutie**: Volgt Artikel 2 (Canon, Governance lezen, Samenwerking met duidelijke taakverdeling)
+
+**Voorbeelden**:
+
+| Agent-resultaat | Value Stream | Locatie |
+|-----------------|--------------|---------|
+| Kennisartikel | Kennispublicatie | `docs/resultaten/artikel-schrijver/` |
+| Analyse-rapport | Kennispublicatie | `docs/resultaten/moeder/` |
+| Charter-template | N.v.t. | `templates/agent.charter.template.md` |
+| Fase-charter-template | N.v.t. | `templates/phase.charter.template.md` |
+| Prompt-template | N.v.t. | `templates/agent-prompt.template.md` |
+
+**Gevolgen voor Agent-Charters en Prompts**:
+- Alle agents die output leveren **MOETEN** deze norm respecteren
+- Agent-prompts specificeren de correcte output-locatie conform deze norm
+- Afwijkingen van deze norm zijn **alleen** toegestaan indien expliciet gemotiveerd in het agent-charter en goedgekeurd door Architecture & AI Enablement
+
+---
+
 ## 6. Gebruik van de workspace-doctrine
 
 ### 6.1 Door Moeder
@@ -175,6 +220,7 @@ Moeder gebruikt deze doctrine als norm bij:
 - het beoordelen of voorstellen voor structuur passen binnen de afspraken;
 - het schrijven en valideren van governance/beleid.md.
 
+| 2026-01-18 | 1.2.0  | Norm toegevoegd voor locatie van agent-resultaten (sectie 5.1): value stream Kennispublicatie → docs/, templates → altijd templates/ | Constitutioneel Auteur |
 Waar in prompts en charters eerder letterlijk `governance/workspace-standaard.md` of alleen de workspace-architectuur werd genoemd, geldt nu deze workspace-doctrine als overkoepelend document.
 
 ### 6.2 Door Agent Smeder en andere agents

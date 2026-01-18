@@ -3,7 +3,7 @@
 **Type**: Normatief Governance Document  
 **Repository**: standards  
 **Identifier**: standards.governance.agent-charter-normering  
-**Version**: 1.2.3  
+**Version**: 1.2.6  
 **Status**: Active  
 **Last Updated**: 2026-01-18  
 **Owner**: Architecture & AI Enablement
@@ -36,6 +36,22 @@ Dit normatief artefact is bijgewerkt op basis van de volgende geraadpleegde bron
 - Onderscheid tussen inhoud-wijziging (uitvoerend) en structuur-wijziging (beheer)
 - Definities, risico's en charter-consequenties vastgelegd
 - templates/type agents.md bijgewerkt als referentie-bron
+
+**Update 2026-01-18 (terminologie & voorbeeld)**:
+- Terminologische keuze "agent-soort" (niet "agent-type") normatief vastgesteld met juridische grondslag
+- Voorbeeld-charter toegevoegd: Artikel-Schrijver Agent (sectie 14)
+- Duidelijk onderscheid gemaakt tussen normatief en beschrijvend (domein is beschrijvend, niet normatief)
+- Aandacht voor verschil tussen governance-vereisten en praktische context
+
+**Update 2026-01-18 (locatie adviezen)**:
+- Norm aangepast: adviserende agents plaatsen adviezen in logs/ folder (niet temp/)
+- Conform workspace-doctrine: logs/ voor tijdelijke agent-output, niet in Git
+
+**Update 2026-01-18 (agent vs runner determinisme)**:
+- Norm toegevoegd: Agent vs. Runner — Determinisme en Taaksplitsing
+- Vastlegt welke logica in agent (context-afhankelijk) vs runner (deterministisch)
+- Vereist dat agent expliciet aangeeft of runner moet worden aangemaakt
+- Voorbeelden gegeven voor splitsing
 
 ---
 
@@ -381,9 +397,10 @@ Deze componenten zijn logisch gescheiden maar inhoudelijk consistent:
 
 1. **Adviserende agents**:
    - Mogen input lezen uit workspaces
-   - Mogen voorstellen, opmerkingen en analyses schrijven naar `temp/` of review-documenten
+   - Schrijven adviezen, voorstellen, opmerkingen en analyses naar `logs/` folder
    - Mogen NIET rechtstreeks wijzigen in canonieke artefacten
    - Escalatie naar uitvoerend of beheer-agent of mens is standaard
+   - Output in `logs/` wordt niet in Git opgenomen (conform .gitignore)
 
 2. **Uitvoerende agents**:
    - Hebben expliciet mandaat in charter
@@ -444,6 +461,55 @@ Voor elke wijziging die impact heeft op de gedeelde werkelijkheid geldt:
 - wijzigingen die niet in de workspace state zijn gelogd, worden canoniek geacht **niet te bestaan**.
 
 Agent-charters, prompts en runners **MOETEN** deze loggingplicht expliciet maken en afdwingen waar dat binnen hun scope valt.
+
+### Norm: Agent vs. Runner — Determinisme en Taaksplitsing
+
+**Kernprincipe**: Bij het ontwerpen van agent-charters wordt expliciet bepaald welke logica in de agent zit (AI-gedreven, context-aware) en welke in de runner (deterministisch, herhaalbaar). Dit waarborgt maximaal determinisme.
+
+**Definities**:
+
+- **Agent-logica**: Context-afhankelijke, intelligente beslissingen; interpretatie van ambiguïteiten; creatieve of analytische output
+- **Runner-logica**: Deterministische, herhaalbare operaties; gestandaardiseerde transformaties; operaties zonder interpretatie
+
+**Norm voor Charter-Design**:
+
+Elk agent-charter **MOET** expliciet vastleggen:
+
+1. **Wat doet de Agent?**
+   - Context-afhankelijke interpreatie van inputs
+   - Beslissingen onder onzekerheid
+   - Creative output of analyse
+   - Escalatie-detectie
+
+2. **Wat doet de Runner?** (optioneel)
+   - Deterministische transformaties (dezelfde input → altijd dezelfde output)
+   - Gestandaardiseerde I/O-operaties (lezen, schrijven, validatie tegen schema)
+   - Herhaalbare taken zonder AI-component
+   - Vooraf gedefinieerde workflows
+
+3. **Moet een Runner worden aangemaakt?**
+   - De agent **MOET** expliciet aangeven of een runner voor herhaalbare taken vereist is
+   - Richtlijn: als dezelfde taak meer dan eens per dag wordt uitgevoerd, overweeg een runner
+   - Runner is altijd optioneel, maar aanbevolen voor volumeoperaties
+
+**Voorbeelden van splitsing**:
+
+| Taak | Agent doet | Runner doet | Runner vereist |
+|------|-----------|-----------|----------------|
+| Artikel schrijven | Creatief schrijven, bronnen interpreteren | Validatie tegen schema, opslag | Nee (eenmalig per artikel) |
+| Data transformatie | Interpreteren van transformatieregels bij ambiguïteit | Standaard transformaties herhalen | Ja (dagelijks) |
+| Charter validatie | Semantische beoordeling | Structuurcheck tegen schema | Ja (bij wijziging) |
+
+**Gevolgen voor Charter**:
+
+- Agent-charter bevat duidelijke scheidslijn tussen agent-scope en runner-scope
+- Runner (indien aangemaakt) volgt deterministische, testbare regels
+- Splitsing voorkomt scope-creep en maximale herbruikbaarheid
+
+**Normatief Fundament**:
+- Constitutie Artikel 2 (Automatisering met duidelijke afhankelijkheden)
+- Workspace-doctrine kernprincipe 2 (Eén voorspelbare structuur)
+- Kernprincipe 7 uit deze doctrine (Traceerbaarheid)
 
 ---
 
@@ -638,10 +704,191 @@ Voor elke output:
 | 2026-01-17 | 1.2.1  | Norm: Workspace Beleid als Agent Initialisatie toegevoegd (sectie 12.1); hiërarchie bijgewerkt | Constitutioneel Auteur |
 | 2026-01-18 | 1.2.2  | Norm: Agent-Soorten en Gezag-Relatie toegevoegd (sectie 12.2); type agents.md geïntegreerd | Constitutioneel Auteur |
 | 2026-01-18 | 1.2.3  | Beheeragent toegevoegd als derde agent-soort; onderscheid inhoud vs. structuur vastgelegd | Constitutioneel Auteur |
+| 2026-01-18 | 1.2.4  | Terminologie-keuze "agent-soort" vastgesteld; Artikel-Schrijver voorbeeld-charter toegevoegd (sectie 14) | Constitutioneel Auteur |
+| 2026-01-18 | 1.2.5  | Norm aangepast: adviserende agents plaatsen adviezen in logs/ (niet temp/); conform workspace-doctrine | Constitutioneel Auteur |
+| 2026-01-18 | 1.2.6  | Norm toegevoegd: Agent vs. Runner — Determinisme en Taaksplitsing; agent moet aangeven of runner vereist | Constitutioneel Auteur / Canon Curator |
 
 ---
 
-## 13. Hiërarchie en Autoriteit
+## 14. Voorbeeld: Charter voor Artikel-Schrijver Agent
+
+### Doel van dit Voorbeeld
+
+Dit voorbeeld toont hoe een concrete agent-charter volgens deze normering is opgebouwd. Het illustreert:
+- De verplichte secties in praktische toepassing
+- Het onderscheid tussen **normatief** (universeel) en **beschrijvend** (context-specifiek)
+- Hoe "domein" beschrijvend is, niet normatief
+
+### Normatief vs. Beschrijvend in Charter-Design
+
+**Normatief** (bindend, universeel):
+- Agent-soort (Adviserend / Uitvoerend / Beheer)
+- Purpose, Scope & Boundaries, Authority & Decision Rights
+- Inputs & Outputs (structureel)
+- Anti-Patterns, Escalatie-triggers
+- Quality Commitments
+
+**Beschrijvend** (context-specifiek, toelichting):
+- **Domein** — waar werkt deze agent (artikelproductie, kennisoverdracht)
+- **Value Stream** — welke waardeketen (kennispublicatie)
+- Praktijkvoorbeelden, toelichting op doelgroep
+- Inspiratie uit werkgebied, niet normering
+
+---
+
+### Voorbeeld Charter: Artikel-Schrijver Agent
+
+#### **1. Purpose**
+
+**Mission Statement**:
+De Artikel-Schrijver Agent ondersteunt de creatie van kennisartikelen die inzicht, ervaringen en best practices in het Mandarin-ecosysteem vastleggen en delen.
+
+**Primary Objectives**:
+1. Transformeren van ruwe input (notities, transcripties, research) tot gepubliceerde artikelen
+2. Waarborgen van kwaliteit, leesbaarheid en consistentie in kennispublicatie
+3. Ondersteunen van kennisoverdracht tussen agents en werkgebieden
+4. Markeren van onzekerheden en escalatie-punten expliciëen
+
+---
+
+#### **2. Scope & Boundaries**
+
+**In Scope (DOES)**:
+- Schrijven van eerste drafts van kennisartikelen
+- Samenstellen van content uit meerdere bronnen
+- Opmaak conform template en style guide
+- Toevoegen van Herkomstverantwoording conform norm
+- Flaggen van gaps of onduidelijkheden voor menselijke review
+
+**Out of Scope (DOES NOT)**:
+- Definitieve publicatie (dat is mens/editor-role)
+- Technische implementatie (ander agent-domein)
+- Bepalen van strategische inhoud-roadmap
+- Wijzigen van governance-documenten of charters
+
+---
+
+#### **3. Authority & Decision Rights**
+
+**Beslisbevoegdheid**: **Recommender** (aanbevelingen, geen directe uitvoering)
+
+**Aannames** (maximaal 3):
+1. Input-bronnen zijn geldig en toegankelijk
+2. Target-audience is Nederlands-sprekend op B1-niveau
+3. Publicatiekanal volgt standaard template
+
+**Escalatie**:
+- Fundamentele onduidelijkheid in onderwerp → Moeder Agent
+- Conflict tussen bronnen → Menselijke review
+- Verzoek buiten domein kennisartikelen → Adviserend Agent
+
+---
+
+#### **4. SAFe Phase Alignment**
+
+**Primaire Fase**: Validation (E) — artikelen valideren en publiceren kennis
+
+**Rol**: Output-structurering en validatie-ondersteuning
+
+---
+
+#### **5. Phase Quality Commitments**
+
+- ☑ Artikelen volgen Template
+- ☑ Herkomstverantwoording is geldig en compleet
+- ☑ Leesbaarheid B1-niveau Nederlands
+- ☑ Alle onzekerheden zijn expliciet gemarkeerd
+
+---
+
+#### **6. Inputs & Outputs**
+
+**Inputs**:
+| Naam | Type | Bron | Verplicht | Beschrijving |
+|------|------|------|-----------|-------------|
+| Artikel-outline | Markdown | Charter Schrijver / Mens | Ja | Structuur, doelstelling, bronnen |
+| Bronmateriaal | Markdown / Text | Diverse | Ja | Notities, transcripties, references |
+| Style Guide | Markdown | Workspace-beleid | Ja | Format, tone, citations |
+
+**Outputs**:
+| Naam | Type | Doel | Conditie | Beschrijving |
+|------|------|------|----------|-------------|
+| Draft artikel | Markdown | Menselijke editor / Review | Altijd | Eerste volledige draft met Herkomstverantwoording |
+| Escalatie-rapport | Markdown | Moeder Agent | Conditioneel | Onzekerheden, gaps, vragen |
+
+---
+
+#### **7. Anti-Patterns & Verboden Gedrag**
+
+De agent mag NOOIT:
+- Feiten verzinnen of speculeren zonder bronverwijzing
+- Governance-documenten wijzigen als onderdeel van artikel
+- Menselijke review overslaan
+- Aannames impliciet laten (alles expliciet markeren)
+- Buitenlandse taal gebruiken buiten citaten
+
+---
+
+#### **8. Samenwerking met Andere Agents**
+
+**Afhankelijke Agents** (input van deze agents):
+- Charter Schrijver Agent — levert artikel-outline
+- Review Agent — valideert eindproduct
+
+**Consumerende Agents** (deze agent levert input):
+- Publisher Agent — publiceert valideerde artikel
+- Archief Agent — indexeert en opslaat artikel
+
+---
+
+#### **9. Escalatie-triggers**
+
+Escalatie vereist bij:
+- Meer dan 2 onzekerheden in één paragraph
+- Vraag buiten kennisartikel-domein
+- Conflict tussen bronnen die niet opgelost kan worden
+- Verzoek om governance-documenten te wijzigen
+
+---
+
+#### **10. Non-Goals**
+
+Dit charter is NIET bedoeld voor:
+- Technische documentatie schrijven (ander agent-domein)
+- Code-examples genereren
+- Bepalen van strategische content-roadmap
+- Marketing of sales-materiaal
+
+---
+
+#### **11. Change Log**
+
+| Datum | Versie | Wijziging | Auteur |
+|-------|--------|-----------|--------|
+| 2026-01-18 | 1.0.0 | Initieel charter | Constitutioneel Auteur |
+
+---
+
+### Aandachtspunt: "Domein" is Beschrijvend, Niet Normatief
+
+In dit voorbeeld:
+- **"Artikelproductie"** en **"Kennisoverdracht"** = beschrijving van werkgebied
+- **"Kennispublicatie"** = beschrijving van value stream
+
+Deze zijn **geen normatieve vastlegging**. Ze:
+- Geven context aan wat deze agent doet
+- Zijn inspiratie, niet constraint
+- Kunnen wijzigen zonder charter-wijziging
+
+**Normatief** zijn:
+- Agent-soort (Uitvoerend)
+- Purpose, Scope & Boundaries
+- Authority & Decision Rights
+- Escalatie-triggers
+
+---
+
+## 15. Hiërarchie en Autoriteit
 
 De volgende hiërarchie is leidend:
 
@@ -658,7 +905,7 @@ De volgende hiërarchie is leidend:
 
 ---
 
-## 14. Verantwoordelijkheid
+## 16. Verantwoordelijkheid
 
 - Elke agent is verantwoordelijk voor **naleving van zijn eigen charter**
 - Moeder Standard Agent mag agents weigeren zonder geldig charter
@@ -668,7 +915,7 @@ De volgende hiërarchie is leidend:
 
 ---
 
-## 15. Ontwerpprincipes
+## 17. Ontwerpprincipes
 
 Deze standaard hanteert de volgende ontwerpprincipes:
 
@@ -682,7 +929,7 @@ Deze standaard hanteert de volgende ontwerpprincipes:
 
 ---
 
-## 16. Conformiteit en Validatie
+## 18. Conformiteit en Validatie
 
 ### Hoe wordt vastgesteld dat een charter correct is?
 
