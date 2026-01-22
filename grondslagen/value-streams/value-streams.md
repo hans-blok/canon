@@ -82,37 +82,7 @@ Agents met primary value stream **IT-development** volgen deze doctrine.
 
 ---
 
-## 3. Kennispublicatie
-
-De value stream **Kennispublicatie** (Knowledge Publication) richt zich op het
-expliciteren, aanscherpen en publiceren van overdraagbare kennis
-(bijvoorbeeld canon-teksten, architectuurbeschrijvingen, essays en
-HTML-publicaties).
-
-Een eerste uitwerking staat in:
-
-- `governance/temp/kennis-publicatie.md` (design-document, nog niet normatief)
-
-De beoogde stages (fases), hier in het Nederlands, zijn:
-
-1. **Intentie en kadering** (Intent & Framing)  
-   Waarom de inhoud bestaat, voor wie zij is en in welke context zij wordt
-   geplaatst.
-
-2. **Conceptualisatie** (Conceptualization)  
-   Uitwerken van het concept en de kernideeën; begrippen en structuur bepalen.
-
-3. **Schrijven** (Authoring)  
-   De inhoud in heldere, leesbare taal uitwerken.
-
-4. **Verfijnen** (Refinement)  
-   Aanscherpen, valideren en harmoniseren van de inhoud; consistentie met canon
-   en terminologie.
-
-5. **Publicatie** (Publication)  
-   Beschikbaar maken en beheren van het kennisobject (formattering, kanaal,
-   distributie).
-
+value
 Deze beschrijving vormt de basis voor een formele **Kennispublicatie-doctrine**
 die later in `artefacten/0-governance/` wordt vastgelegd.
 
@@ -196,3 +166,76 @@ Typische stages (fases):
 Een formele **Doctrine Solution-architecting** die deze value stream uitwerkt,
 inclusief rollen, artefacten en kwaliteitscriteria, volgt in een later stadium
 en wordt opgenomen in `artefacten/0-governance/`.
+
+---
+
+## 5. Architectuur-en-oplossingsontwerp
+
+## Herkomstverantwoording
+
+Dit normatief artefact is geschreven op basis van de hieronder geraadpleegde
+bronnen. De value stream Architectuur-en-oplossingsontwerp is afgeleid uit
+bestaande governance-documenten en aangevuld met kennis over generieke
+architectuur- en ontwerppraktijken.
+
+**Geraadpleegde bronnen**:
+- Constitutie Mandarin (versie 1.2.1, gelezen op 2026-01-22 10:30)
+- value-streams.md (bestaande versie met Agent enablement, IT-development,
+  Kennispublicatie en Solution-architecting, gelezen op 2026-01-22 10:30)
+- doctrine-it-development.md (gelezen op 2026-01-22 10:30)
+- Opdracht van gebruiker (ontvangen op 2026-01-22): voeg toe een nieuwe value
+  stream architectuur-en-oplossingsontwerp
+
+**Toelichting op structuur**:
+Deze value stream beschrijft het proces van het ontwerpen van architectuur en
+oplossingen voor complexe vraagstukken. De stages volgen de natuurlijke
+progressie van architectuurwerk, van probleemverkenning via conceptueel ontwerp
+naar gedetailleerd uitwerking en validatie. De value stream is generiek en kan
+toegepast worden in verschillende contexten (IT, bedrijfsprocessen, organisatie).
+
+---
+
+De value stream **Architectuur-en-oplossingsontwerp** richt zich op het
+systematisch ontwerpen van architecturen en oplossingen die beantwoorden aan
+complexe vraagstukken, waarbij rekening wordt gehouden met technische,
+functionele en organisatorische aspecten.
+
+Doel:
+
+- vertalen van behoeften en eisen naar coherente architectuur- en
+  oplossingsconcepten;
+- waarborgen van technische haalbaarheid, schaalbaarheid en onderhoudbaarheid;
+- creëren van gedeeld begrip tussen stakeholders door heldere architectuur-
+  documentatie;
+- faciliteren van gefundeerde ontwerpbeslissingen op basis van afwegingen en
+  trade-offs.
+
+Typische stages (fases):
+
+1. **Probleemverkenning en context** (Problem Exploration & Context)  
+   Begrijpen van het vraagstuk, stakeholders, randvoorwaarden en bestaande
+   situatie. Identificeren van drivers, constraints en kwaliteitsattributen.
+
+2. **Conceptueel ontwerp** (Conceptual Design)  
+   Uitwerken van architectuurvisie en hoofdlijnen. Definiëren van
+   architectuurprincipes, patronen en high-level componenten. Maken van
+   initiële architectuurschetsen en conceptuele modellen.
+
+3. **Oplossingsuitwerking** (Solution Elaboration)  
+   Detailleren van de gekozen oplossingsrichting. Specificeren van componenten,
+   interfaces, data-flows en integraties. Opstellen van Architecture Decision
+   Records (ADR's) voor belangrijke ontwerpkeuzes.
+
+4. **Validatie en verfijning** (Validation & Refinement)  
+   Toetsen van het ontwerp aan requirements en kwaliteitsattributen. Uitvoeren
+   van architecture reviews, proof-of-concepts en haalbaarheidsanalyses.
+   Bijstellen op basis van feedback en bevindingen.
+
+5. **Formalisering en overdracht** (Formalization & Handover)  
+   Vastleggen van definitieve architectuur in standaard documentatieformaten.
+   Voorbereiden van overdracht naar realisatieteams. Opstellen van
+   implementatierichtlijnen en architectuurbewakingsafspraken.
+
+Een formele **Doctrine Architectuur-en-oplossingsontwerp** die deze value
+stream uitwerkt, inclusief rollen, deliverables en kwaliteitscriteria, volgt
+in een later stadium en wordt opgenomen in `artefacten/0-governance/`.
